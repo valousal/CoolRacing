@@ -13,9 +13,11 @@ Importation de la base de données **coolracing**
 
 ## Utilisateurs par défaut ##
 ### Organisateurs ###
-CoursPoney::CoursPoney
+Login : CoursPoney
+Password : CoursPoney
 ### Participants###
-Gerard::Gerard
+Login : Gerard
+Password : Gerard
 
 ## Liens utiles ##
 ### Accueil de la doc ###
@@ -28,7 +30,7 @@ coolracing/application/
 Pensez à modifier le PATH du DocumentRoot et du Directory
 
 ```
-#!php
+
 
 <VirtualHost *:80>
     ServerName      coolracing
