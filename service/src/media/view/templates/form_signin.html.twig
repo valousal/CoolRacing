@@ -1,0 +1,51 @@
+{% extends "main_oauth.html.twig" %}
+{% block main_content %}
+
+<section id="main_form">
+	<div>
+		<div class="header">
+			<h1>CoolRacing</h1>
+		</div>
+	<form method="POST" action="{{traitement}}">
+		{# <input type="radio" name="type" value="participant" checked>participant
+		<br>
+		<input type="radio" name="type" value="organisateur">organisateur #}
+		<div class="form-group">
+		    <label>Login</label>
+		    <input type="text" name="login" placeholder="Entrez votre login" class="form-control">
+		</div>
+
+		<div class="form-group">
+		    <label>Mot de passe</label>
+		    <input type="password" name="password" placeholder="Entrez votre mot de passe" class="form-control">
+		</div>
+		<input type="hidden" name="url_redirect" value="{{url_redirect}}">
+		<input type="hidden" name="id_client" value="{{id_client}}">
+
+		<button type="submit" class="btn btn-default"> OK </button>
+
+		<div id="text">
+			<p>
+				En vous connectant via notre service CoolRacing, vous authorisez l'application suivante : <b>{{nameClient}}</b> à accéder aux données de votre compte. <br/>
+			</p>
+			{# TODO : Récupérer et afficher les scopes de l'application #}
+			Cette application pourra :
+			<ul>
+				<li>Accéder à vos données publiques</li>
+				<li>Modifier vos données publiques</li>
+			</ul>
+			Cette application ne pourra pas: 
+			<ul>
+				<li>Récupérer votre mot de passe</li>
+				<li>Récupérer vos données privées</li>
+			</ul>
+		</div>
+
+		<footer>
+        	<p>An authentification service provided by <a href="{{rootUri}}/doc/">CoolRacing</a>.</p>
+        </footer>
+
+	</form>
+</section>
+
+{% endblock %}

@@ -1,0 +1,174 @@
+{% extends "main.html.twig" %}
+{% block main_content %}
+
+<!-- Page Content -->
+<section id='main'>
+
+	<!-- Event describ container -->
+	<section id='event-main'>
+
+		<!-- Event img -->
+		<div id='event-head'>
+			<div id='event-img'>
+				<img src='{{rootUri}}/src/media/assets/datas/images/event.png'>
+			</div>
+		</div>
+
+		<!-- Event title -->
+		<div id='event-title'>
+			<h1> {{event['titre']}} </h1>
+			<h2> <a href='{{rootUri}}/organisateurs/profil/{{organisateur['id']}}'>{{organisateur['nom_structure']}}</a><h2>
+		</div>
+
+		<!-- Event describ -->
+		<div id='event-describ'>
+			<p>
+				{{event['description']}}
+			</p>
+			{% if type == 'true' and modifier == true %}
+				<a id='particip-link' href='{{rootUri}}/evenements/{{event['id']}}/update'>Modifier</a>
+			{% endif %}
+		</div>
+	</section>
+
+	<!-- Event detail -->
+	<section id='event-detail'>
+	
+		<!-- Event info -->
+		<section class='col left'>
+
+			<div class='block-head'>
+				<img src='{{rootUri}}/src/media/assets/datas/icones/info-round.png' alt='New'>
+				<h1> Informations</h1>
+			</div>
+
+			<h2> Informations générales:</h2>
+
+			<ul id='event-col-info-left'>
+				<li>Nom de l'événement:  <small>{{event['titre']}}</small></li>
+				<li>Lieu:  <small>{{event['lieu']}}</small></li>
+				<li>Date de l'événement: <small>{{event['dateEvenement']}}</small></li>
+				<li>Catégorie: <small>{{event['categorie']}}</small></li>
+				<li>Distance: <small>{{event['distance']}}</small></li>
+			</ul>
+
+			<ul id='event-col-info-right'>
+				<li>Organisé par: <small>{{organisateur['nom_structure']}}</small></li>
+				<li>Mail de contact:  <small>{{organisateur['mailPub']}}</small></li>
+				<li>Téléphone:  <small>{{organisateur['tel']}}</small></li>
+				<li>Création: <small>{{event['dateCreation']}}</small></li>
+			</ul>
+
+			<hr/>
+
+			{% if dateInscription == true %}
+				<h2> Informations d'inscription:</h2>
+
+				<ul id='event-col-info-left'>
+					<li>Ouverture des inscriptions: <small>{{event['dateOuverture']}}</small></li>
+					<li>Cloture des inscriptions: <small>{{event['dateCloture']}}</small></li>
+				</ul>
+
+			<ul id='event-col-info-right'>
+				<li>Nombre de place: <small>{{event['nombrePlace']}}</small></li>
+				<li>Prix de l'inscription:  <small>{{event['prix']}}€</small></li>
+			</ul>
+
+				{% if type == 'false'%}
+					<a id='particip-link' href='{{rootUri}}/evenements/{{event['id']}}/subscribe'>Je participe</a>
+				{% endif %}
+			{% else %}
+				<h4>Les inscriptions sont indisponibles ! </h4>
+			{% endif %}
+
+
+			{% if dateEvenement == true %}
+				<hr/>
+				<h2> Classement:</h2>
+				<a id='classement' href='{{rootUri}}/evenements/{{event['id']}}/classement'>Voir</a>
+			{% endif %}
+
+		</section>
+
+		<!-- Event map -->
+		<section id='event-map' class='col right'>
+
+			<div class='block-head'>
+				<img src='{{rootUri}}/src/media/assets/datas/icones/info-round.png' alt='New'>
+				<h1> Localisation</h1>
+			</div>
+
+			<div id='map-container'>
+				<div id='mapEvent'>
+				</div>
+			</div>
+		</section>
+	</section>
+
+</section>
+
+		<!-- <div id='event-detail'>
+			{# INFORMATIONS SUR L'EVENEMENT A METTRE EN PAGE  #}
+			<div id='event-infos' style='font-size:1rem'>
+				<h1>EVENEMENTS INFOS</h1>
+				<ul>
+					- <li>{{event['dateCreation']}}</li>
+					- <li>{{event['lieu']}}</li>
+					- <li>{{event['dateCloture']}}</li>
+					- <li>{{event['dateOuverture']}}</li>
+					- <li>{{event['dateEvenement']}}</li>
+					- <li>{{event['nombrePlace']}}</li>
+					- <li>{{event['prix']}}</li>
+					- <li>{{event['distance']}}</li>
+					- <li>{{event['statut']}}</li>
+					<li>{{event['categorie']}}</li>
+				</ul>
+			</div>
+			{# INFORMATIONS A METTRE EN PAGE  #}
+
+			{# INFORMATIONS SUR L'EVENEMENT A METTRE EN PAGE  #}
+			<div id='event-infos' style='font-size:1rem'>
+				<h1>ORGANISATEUR INFOS</h1>
+				<ul>
+					<li>{{organisateur['nom_structure']}}</li>
+					<li>{{organisateur['forme_juridique']}}</li>
+					<li>{{organisateur['nomResponsable']}}</li>
+					<li>{{organisateur['prenomResponsable']}}</li>
+					<li>{{organisateur['mailResponsable']}}</li>
+					<li>{{organisateur['mailPub']}}</li>
+					<li>{{organisateur['tel']}}</li>
+					<li><strong>Adresse</strong></li>
+					<ul>
+						<li>{{organisateur['adresse']['num']}}</li>
+						<li>{{organisateur['adresse']['type']}}</li>
+						<li>{{organisateur['adresse']['rue']}}</li>
+						<li>{{organisateur['adresse']['cp']}}</li>
+						<li>{{organisateur['adresse']['ville']}}</li>
+					</ul>
+				</ul>
+			</div>
+			{# INFORMATIONS A METTRE EN PAGE  #}
+
+			{# INFORMATIONS SUR LES PARTICIPANTS DE LEVENEMENT A METTRE EN PAGE  #}
+			<div id='event-infos' style='font-size:1rem'>
+				<h1>LES PARTICIPANTS DE L'EVENT INFOS</h1>
+				{% for participant in participants %}
+					<h3>{{participant.participant.nom}}</h3>
+					<ul>
+						<li>{{participant.participant.prenom}}</li>
+						<li>{{participant.participant.dateNaissance}}</li>
+						<li>{{participant.participant.dateInscription}}</li>
+						<li>{{participant.participant.mailPub}}</li>
+						<li>{{participant.participant.sexe}}</li>
+					</ul>
+					<h3>Ses informations pour l'evenement</h3>
+					<ul>
+						<li>{{participant.participant.pivot.dossard}}</li>
+						<li>{{participant.participant.pivot.club}}</li>
+					</ul>
+				{% endfor %}
+			</div>
+			{# INFORMATIONS A METTRE EN PAGE  #}
+		</div> -->
+
+{% endblock %}

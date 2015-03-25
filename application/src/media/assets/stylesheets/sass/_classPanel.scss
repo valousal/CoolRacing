@@ -1,0 +1,21 @@
+.panel{
+	width: 15rem;
+	height: calc(100% - 3rem);
+	overflow-x: hidden;
+	overflow-y: scroll;
+	display: inline-block;
+	vertical-align: top;
+	box-sizing: border-box;
+	background-color: $main_color;
+	padding: 0.5rem;
+	white-space: normal;
+
+	ul{
+		list-style: none;
+	}
+
+	@media screen and (max-width : 50rem){
+		box-sizing: border-box;
+		width: 15rem;
+	}
+}

@@ -1,0 +1,59 @@
+{% extends "main.html.twig" %}
+{% block main_content %}
+
+	<!-- Page Content -->
+	<section id='main'>
+
+		<!-- events à cenir -->
+		<section class='event-list'>
+			<div class='eventList-head'>
+				<img src='{{rootUri}}/src/media/assets/datas/icones/popular-round.png' alt='New'/>
+				<h1> Mes événements à venir </h1>
+			</div>
+			<ul id='new'>
+				{% for event in events %}
+					{% if event.classement == '' %}
+					<li>
+						<a href='{{rootUri}}/evenements/{{event.evenement.id}}'>
+							<img src='{{rootUri}}/src/media/assets/datas/images/{{event.evenement.idCategorie}}.png' alt='no image'/>
+							<div>
+								<h2>{{event.evenement['titre']}}</h2>
+								{# <p>Organisé par: <strong> {{eventCat1.linkOrg.organisateur.nom_structure}} </strong> </p> #}
+								<p>Lieu: <strong> {{event.evenement['lieu']}}</strong></p>
+								<p>Date: <strong> {{event.evenement.dateEvenement}}</strong></p>
+							</div>
+						</a>
+					</li>
+					{% endif %}
+		    	{% endfor %}
+			</ul>
+		</section>
+
+		<!-- events passés -->
+		<section class='event-list'>
+			<div class='eventList-head'>
+				<img src='{{rootUri}}/src/media/assets/datas/icones/popular-round.png' alt='New'/>
+				<h1> Mes événements passés </h1>
+			</div>
+			<ul id='new'>
+				{% for event in events %}
+					{% if event.classement != '' %}
+					<li>
+						<a href='{{rootUri}}/evenements/{{event.evenement.id}}'>
+							<img src='{{rootUri}}/src/media/assets/datas/images/{{event.evenement.idCategorie}}.png' alt='no image'/>
+							<div>
+								<h2>{{event.evenement['titre']}}</h2>
+								{# <p>Organisé par: <strong> {{eventCat1.linkOrg.organisateur.nom_structure}} </strong> </p> #}
+								<p>Lieu: <strong> {{event.evenement['lieu']}}</strong></p>
+								<p>Date: <strong> {{event.evenement.dateEvenement}}</strong></p>
+								<p>Position : {{event.classement['position']}}</p>
+							</div>
+						</a>
+					</li>
+					{% endif %}
+		    	{% endfor %}
+			</ul>
+		</section>
+
+	</section>
+{% endblock %}

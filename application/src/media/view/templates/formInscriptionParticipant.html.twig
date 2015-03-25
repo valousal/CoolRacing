@@ -1,0 +1,50 @@
+{% extends "main.html.twig" %}
+{% block main_content %}
+
+	<!-- Page Content -->
+	<section id='main'>
+
+		<h1>Formulaire pour qu'un participant s'inscrire a une course</h1>
+		<h3>Mes infos perso </h3>
+		<form id='inscriptionForm' method='POST'>
+
+			<!-- Info Perso -->
+			<section class='middle'>
+				
+				<!-- Title page -->
+				<div class='block-head'>
+					<h1>Participer à un événement</h1>
+				</div>
+
+				<div>
+					<label for='club'>Club</label>
+					<input type='text' name='club'>
+				</div>
+
+				{# <div>
+					<label for='session'>Session de départ</label>
+					<input type='text' name='session'>
+				</div>
+
+				<div>
+					<label for='sas'>Sas de départ</label>
+					<input type='text' name='sas'>
+				</div> #}
+			</section>
+
+			<!-- Bouton form -->
+			<section id='form-btn'>
+
+				<section class='form-btn-input'>
+					<input type='submit' value="Valider">
+				</section>
+
+				<section class='form-btn-input'>
+					<input type='reset' value='Reset'>
+				</section>
+			</section>
+		</form>
+	</section>
+
+		
+{% endblock %}

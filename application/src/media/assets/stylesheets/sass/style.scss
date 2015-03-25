@@ -1,0 +1,70 @@
+// Reset style css:
+@import 'reset';
+
+// Variables for all css pages:
+@import 'variable';
+
+// Classes for all css pages:
+@import 'typo';
+@import 'grid';
+
+
+//Body
+@import 'html_body';
+
+//Error
+@import 'error';
+
+//Panel
+@import 'classPanel';
+@import 'panel';
+@import 'panel-default';
+
+
+//Page
+@import 'fog';
+@import 'page';
+@import 'main';
+@import 'nav';
+@import 'page';
+
+//Event
+@import 'event-describ';
+@import 'event-detail';
+@import 'event-map';
+
+//Form Event
+@import 'createEvent';
+@import 'createMap';
+
+
+//Organisateur
+@import 'profilOrganisateur';
+@import 'org-describ';
+@import 'org-detail';
+@import 'org-events';
+
+//Participant
+@import 'profilParticipant';
+@import 'profil-event';
+
+//List d'event
+@import 'eventList';
+
+// Recherche
+@import 'searchForm';
+@import 'searchResults';
+
+// Inscription
+@import 'inscriptionChoice';
+@import 'inscriptionForm';
+
+// Form
+@import 'form';
+
+// Others Pages:
+@import 'faq';
+@import 'mentions';
+
+//Footer
+@import 'footer';

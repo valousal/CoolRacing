@@ -1,0 +1,105 @@
+{% extends "main.html.twig" %}
+{% block main_content %}
+
+<!-- Page Content -->
+<section id='main'>
+
+	<!-- Organisateur describ container -->
+	<section id='org-main'>
+
+		<!-- Organisateur img -->
+		<div id='org-head'>
+			<div id='org-img'>
+				<img src='{{rootUri}}/src/media/assets/datas/images/logomarathonmtstmichel.jpg'>
+			</div>
+		</div>
+
+		<!-- Organisateur describ -->
+		<div id='org-describ'>
+			<h1> {{organisateur.nom_structure}} </h1>
+			<p>
+				{# PAS DE CHAMP DESCRIPTION #}
+			</p>
+		</div>
+	</section>
+
+	<!-- Organisateur detail -->
+	<section id='org-detail'>
+		<div class='org-event-head'>
+			<img src='{{rootUri}}/src/media/assets/datas/icones/info-round.png' alt='New'>
+			<h1> Informations</h1>
+		</div>
+		<ul id='org-col-info-left'>
+			<li>Date d'inscription: <small>{{organisateur.dateInscription}}</small></li>
+			<li>Forme Juridique:  <small>{{organisateur.forme_juridique}}</small></li>
+			<li>Mail Publique:  <small>{{organisateur.mailPub}}</small></li>
+		</ul>
+		<ul id='org-col-info-right'>
+			<li>Adresse:  <small>{{organisateur.adresse.num}} {{organisateur.adresse.type}} {{organisateur.adresse.rue}}</small></li>
+			<li>Code Postal:  <small>{{organisateur.adresse.cp}}</small></li>
+			<li>Ville:  <small>{{organisateur.adresse.ville}}</small></li>
+		</ul>
+	</section>
+
+	
+
+	<!-- Organisateur passé events -->
+	{% if events2 != false %}
+		<section class='org-event'>
+			<div class='org-event-head'>
+				<img src='{{rootUri}}/src/media/assets/datas/icones/popular-round.png' alt='New'>
+				<h1> Organisés</h1>
+			</div>
+			<ul>
+				{% for event in events2 %}
+					<li>
+						<a href='{{rootUri}}/evenements/{{event.id}}'>
+							<img src='{{rootUri}}/src/media/assets/datas/images/{{event.idCategorie}}.png' alt='no image'>
+							<div>
+								<h2>{{event.titre}}</h2>
+								<p> Date ouverture : <strong> {{event.dateOuverture}}</strong></p>
+								<p> Date de l'évènement : <strong> {{event.dateEvenement}}</strong></p>
+								<p> Nombre de places : <strong> {{event.nombrePlace}}</strong></p>
+								<p> Prix : <strong> {{event.prix}}</strong></p>
+								<p> Distance : <strong> {{event.distance}}</strong></p>
+							</div>
+						</a>
+					</li>
+				{% endfor %}
+			</ul>
+		</section>
+	{% endif %}
+
+
+
+
+	<!-- Organisateur a venir events -->
+	{% if events != false %}
+		<section class='org-event'>
+			<div class='org-event-head'>
+				<img src='{{rootUri}}/src/media/assets/datas/icones/popular-round.png' alt='New'>
+				<h1> A venir</h1>
+			</div>
+			<ul>
+				{% for event in events %}
+					<li>
+						<a href='{{rootUri}}/evenements/{{event.id}}'>
+							<img src='{{rootUri}}/src/media/assets/datas/images/{{event.idCategorie}}.png' alt='no image'>
+							<div>
+								<h2>{{event.titre}}</h2>
+								<p> Date ouverture : <strong> {{event.dateOuverture}}</strong></p>
+								<p> Date de l'évènement : <strong> {{event.dateEvenement}}</strong></p>
+								<p> Nombre de places : <strong> {{event.nombrePlace}}</strong></p>
+								<p> Prix : <strong> {{event.prix}}</strong></p>
+								<p> Distance : <strong> {{event.distance}}</strong></p>
+							</div>
+						</a>
+					</li>
+				{% endfor %}
+			</ul>
+		</section>
+	{% endif %}
+
+</section>
+
+{% endblock %}

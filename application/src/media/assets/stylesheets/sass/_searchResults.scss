@@ -1,0 +1,124 @@
+#searchResults{
+	width: 100%;
+	height: auto;
+	display: block;
+	box-sizing: border-box;
+	background-color: white;
+	margin-bottom: 0.5rem;
+	box-shadow: 0px 3px 3px #aaa;
+
+	ul{
+		width: 100%;
+		height: auto;
+		display: block;
+		box-sizing: border-box;
+
+		li{
+			width: 100%;
+			height: auto;
+			display: block;
+			box-sizing: border-box;
+			border-bottom: 1px solid lightgrey;
+			padding: 0.5rem; 
+
+			img{
+				height: 8rem;
+				width: 12rem;
+				display: inline-block;
+				vertical-align: top;
+			}	
+
+			.results-info{
+				width: calc(100% - 12rem);
+				height: 8rem;
+				display: inline-block;
+				vertical-align: top;
+				box-sizing: border-box;
+				padding-left: 1rem;
+
+				a{
+					color: inherit;
+					text-decoration: none;
+				}
+
+				h2{
+					font-size: 1.1rem;
+					font-weight: bold;
+					color: $secondary_color;
+					margin-bottom: 0.5rem;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+
+					&:hover{
+						text-decoration: underline;
+					}
+				}
+
+				div{
+					width: 100%;
+					height: auto;
+					display: inline-block;
+					vertical-align: top;
+					box-sizing: border-box;
+
+					h3{
+						width: auto;
+						display: block;
+						box-sizing: border-box;
+						padding-right: 1rem;
+						font-size: 0.8rem;
+						font-weight: normal;
+						color: $grey;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						white-space: nowrap;		
+					}
+
+					h4{
+						width: auto;
+						display: block;
+						vertical-align: top;
+						box-sizing: border-box;
+						padding: 0.3rem 1rem 0rem 0rem;
+						font-size: 0.8rem;
+						font-weight: normal;
+						color: $grey;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+
+						strong{
+							white-space: nowrap;
+
+							a:hover{
+								text-decoration: underline;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	@media screen and (max-width : 25em){
+		ul{
+			li{
+				img{
+					display: block;
+					margin: auto;
+				}
+
+				.results-info{
+					display: block;
+					width: 100%;
+					padding: 0;
+
+					h2{
+						margin-top: 0.5rem;
+					}
+				}
+			}
+		}
+	}
+}

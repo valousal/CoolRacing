@@ -1,0 +1,142 @@
+{% extends "main.html.twig" %}
+{% block main_content %}
+
+	<!-- Page Content -->
+	<section id='main'>
+
+		{% if message %}
+		<section class="error">
+			<img src="{{rootUri}}/src/media/assets/datas/icones/error.png">
+			<div class='msg'>
+				<h1>Erreur</h1>
+				<p>{{message}}</p>
+			</div>
+		</section>
+		{% endif %}
+
+		<!-- Participant Inscription Titre-->
+		<section id='inscriptionTitle'>
+
+			<!-- Title page -->
+			<div class='block-head'>
+				<img src='{{rootUri}}/src/media/assets/datas/icones/search-round.png' alt='Search'>
+				<h1>Inscription participant</h1>
+			</div>
+
+			<!-- Describ page -->
+			<div class='block-describ'>
+				<p> Remplisser le formulaire suivant pour vous inscrire sur le site et pouvoir participer aux événements proposés.</p>
+				<ul>
+					<li>Les informations personnelles ne seront pas rendues publique.</li>
+				</ul>
+			</div>
+		</section>
+			
+		<!-- Form inscription -->
+		<form id='inscriptionForm' action='{{action}}' method='POST'>
+
+			<!-- Info perso -->
+			<section class='col left'>
+
+				<!-- Title page -->
+				<div class='block-head'>
+					<h1> Informations personnelles</h1>
+				</div>
+				
+				<div>
+					<label for='nom'>Nom </label>
+					<input type='text' name='nom' id='name' onblur='verifAllParticipant()'>
+				</div>
+
+				<div>
+					<label for='prenom'>Prenom </label>
+					<input type='text' name='prenom' id='firstname' onblur='verifAllParticipant()'>
+				</div>
+
+				<div>
+					<label for='sexe'>Sexe </label>
+					<div class='input-radio'>
+						<input type='radio' name='sexe' value='M' checked>
+						<div class='radio'></div>
+						<label>Masculin</label>
+					</div>
+					<div class='input-radio'>
+						<input type='radio' name='sexe' value='F'>
+						<div class='radio'></div>
+						<label>Feminin</label>
+					</div>
+				</div>
+
+				<div>
+					<label for='dateNaissance'>Date de naissance (JJ/MM/AAAA)</label>
+					<input type='date' name='dateNaissance' id='date' class='input-date' onblur='verifAllParticipant()'>
+				</div>
+
+				<div>
+					<label for='mailPrivate'>Mail privée  </label>
+					<input type='mail' name='mailPrivate' id='mailprivate' class='input-mail' onblur='verifAllParticipant()'>
+				</div>
+
+				<div>
+					<label for='tel'>Telephone (00-00-00-00-00)</label>
+					<input type='tel'id='tel'  name='tel' class='input-tel' onblur='verifAllParticipant()'>
+				</div>
+
+				<div id="adress">
+					<label for='type'>Adresse</label>
+					<input type='num' id='num' name='num' placeholder='N°' onblur='verifAllParticipant()'>
+					<select name='type'>
+						<option>Rue</option>
+						<option>Boulevard</option>
+						<option>Impasse</option>
+					</select>
+					<input type='text' id='rue' name='rue' placeholder='Adresse' class='input-text'  onblur='verifAllParticipant()'>
+					<input type='num' id='postal' name='CP'  placeholder='Code postal' class='input-postal' onblur='verifAllParticipant()'>
+					<input type='text' id='ville' name='ville'  placeholder='Ville' class='input-text' onblur='verifAllParticipant()'>
+				</div>
+			</section>
+
+			<!-- Infos profil -->
+			<section class='col right'>
+				<!-- Title page -->
+				<div class='block-head'>
+					<h1> Informations du profil</h1>
+				</div>
+
+				<div>
+					<label for='login'>Identifiant </label>
+					<input type='text' name='login' id='login' class='input-login'  onblur='verifAllParticipant()'>
+				</div>
+
+				<div>
+					<label for='password'>Mot de passe (au moins 8 caractères)  </label>
+					<input type='password' name='password' id='mdp' class='input-mdp'  onblur='verifAllParticipant()'>
+				</div>
+
+				<div>
+					<label for='password'>Confirmation mot de passe </label>
+					<input type='password' name='password-confirm' id='mdp-valid' class='input-mdp-valid' onblur='verifAllParticipant()' >
+				</div>
+
+				<div>
+					<label for='mailPub'>Mail public</label>
+					<input type='mail' name='mailPub' id='mailpublic' class='input-mail' onblur='verifAllParticipant()'>
+				</div>
+			</section>
+
+			<!-- Bouton form -->
+			<section id='form-btn'>
+
+				<section class='form-btn-input'>
+					<input id='submit' disabled='true' type='submit' value="S'inscrire">
+				</section>
+
+				<section class='form-btn-input'>
+					<input type='reset' value='Reset'>
+				</section>
+			</section>
+				
+		</form>
+
+	</section>
+{% endblock %}

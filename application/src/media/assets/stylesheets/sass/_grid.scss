@@ -1,0 +1,34 @@
+.grid_container{
+    width: 100%;
+    height: auto;
+    min-height: 20em;
+    font-size: 0;
+}
+
+@mixin grid_row($width, $margin){
+    width: $width;
+    display: block;
+    margin-bottom: $margin;
+}
+
+@mixin grid_col($nbcol,$tcol,$wgutter:2%,$offset:0){
+    $col : (100%-($tcol*$wgutter))/$tcol;
+    width : ($nbcol*$col)+(($nbcol - 1)*$wgutter);
+    margin: 0 $wgutter/2;
+    padding: 1em;
+    box-sizing: border-box;
+    vertical-align: top;
+    font-size: 1rem;
+    display: inline-block;
+    margin-bottom: 1em;
+
+    @if $offset != 0 {
+    margin-left: ($offset * $col + ($offset) * $wgutter) + $wgutter/2 ;
+    }
+    @else{
+    margin: 0 ($wgutter/2);
+    }
+}
+
+
+

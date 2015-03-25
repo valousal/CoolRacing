@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>CoolRacing API</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link type="text/css" rel="stylesheet" href="{{rootUri}}/src/media/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{rootUri}}/src/media/dist/css/bootstrap2.css"/>
+        <link rel="stylesheet" href="{{rootUri}}/src/media/dist/css/all.css"/>
+        <link rel="stylesheet" href="{{rootUri}}/src/media/dist/css/style2.css"/>
+        <link rel="stylesheet" href="{{rootUri}}/src/media/dist/css/responsive.css"/>
+        <script src="{{rootUri}}/src/media/dist/js/jquery-2.1.1.min.js"></script>
+        <script src="{{rootUri}}/src/media/dist/js/bootstrap.min.js"></script>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    </head>
+    
+    <body> 
+            <nav class="navbar navbar-default">
+              <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="{{rootUri}}/doc/">CoolRacing</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav">
+                    <li><a href="{{rootUri}}/doc/">Accueil</a></li>
+                    <li><a href="{{rootUri}}/doc/doc">Documentation</a></li>
+                    <li><a href="{{rootUri}}/doc/signin">S'enregistrer</a></li>
+                    <li><a href="{{rootUri}}/doc/contact">A propos</a></li>
+                  </ul>
+                </div><!-- /.navbar-collapse -->
+              </div><!-- /.container-fluid -->
+            </nav>
+
+            <!--BLOCK CONTENT-->
+                 {% block main_content %}
+                {% endblock %}
+
+            <footer>
+                Copyright CoolRacing
+            </footer>
+
+    <script src="{{rootUri}}/src/media/dist/js/setup.js"></script>
+    </body>
+</html>

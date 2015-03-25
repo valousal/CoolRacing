@@ -1,0 +1,4 @@
+/service/vendor/
+/service/composer.phar/
+/application/vendor/
+/application/composer.phar/

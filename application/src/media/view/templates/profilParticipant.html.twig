@@ -1,0 +1,39 @@
+{% extends "main.html.twig" %}
+{% block main_content %}
+
+	<section id='main'>
+		<section id='profilParticipant'>
+
+			<section id='hellobar'>
+				<h1> Bonjour {{participant['prenom']}} ! </h1>
+			</section>
+
+			<!-- events à cenir -->
+			<section class='event-list'>
+				<button class='list-left' onclick="scrollDiv('popular', -182)"> &lt; </button>
+				<button class='list-right' onclick="scrollDiv('popular', 182)"> &gt; </button>
+				<div class='eventList-head'>
+					<img src='{{rootUri}}/src/media/assets/datas/icones/popular-round.png' alt='New'/>
+					<h1> Événements à venir </h1>
+				</div>
+				<ul id='new'>
+					{% for event in events %}
+						{% if event.classement == '' %}
+						<li>
+							<a href='{{rootUri}}/evenements/{{event.evenement.id}}'>
+								<img src='{{rootUri}}/src/media/assets/datas/images/{{event.evenement.idCategorie}}.png' alt='no image'/>
+								<div>
+									<h2>{{event.evenement['titre']}}</h2>
+									{# <p>Organisé par: <strong> {{eventCat1.linkOrg.organisateur.nom_structure}} </strong> </p> #}
+									<p>Lieu: <strong> {{event.evenement['lieu']}}</strong></p>
+									<p>Date: <strong> {{event.evenement.dateEvenement}}</strong></p>
+								</div>
+							</a>
+						</li>
+						{% endif %}
+			    	{% endfor %}
+				</ul>
+			</section>
+	    </section>
+	</section>
+{% endblock %}

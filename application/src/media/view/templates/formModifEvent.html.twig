@@ -1,0 +1,111 @@
+{% extends "main.html.twig" %}
+{% block main_content %}
+	<!-- Page Content -->
+	<section id='main'>
+
+		<!-- Section choix inscription -->
+		<section id='modifEvent'>
+			<h1>Formulaire pour modifier mon evenement</h1>
+
+			<form action='{{action}}' method="POST" style='font-size:1rem;'>
+				
+				<!-- Info event -->
+				<section class='col left'>
+					<section class='block-head'>
+						<img src='{{rootUri}}/src/media/assets/datas/icones/info-round.png' alt='New'>
+						<h1> Informations</h1>
+					</section>
+
+					<div>
+						<label for='titre'> <b> Nom de l'événement </b> </label>
+						<input type='text' name='titre'  value="{{infoEvent['titre']}}">
+					</div>
+
+					<div class='input-col'>
+						<label for='lieu'> Lieu </label>
+						<input type='text' name='lieu' value="{{infoEvent['lieu']}}">
+					</div>
+
+					<div class='input-col'>
+						<label for='titre'> Catégorie </label>
+						<select name='categorie'> 
+							{% for cat in cats %}
+								<option value='{{cat}}'>{{cat}}</option>
+							{% endfor %}
+						</select>
+					</div>
+
+					<div class='input-col'>
+						<label for='dateEvenement'>Date de lévénement</label>
+						<input type='date' name='dateEvenement' value="{{infoEvent['dateEvenement']}}">
+					</div>
+
+					<div>
+						<label for='description'>Description</label>
+						<textarea name='description'>{{infoEvent['description']}}</textarea>
+					</div>
+
+					<div class='input-col'>
+						<label for='dateOuverture'>Date d'ouverture</label>
+						<input type='date' name='dateOuverture' value="{{infoEvent['dateOuverture']}}">
+					</div>
+
+					<div class='input-col'>
+						<label for='dateCloture'>Date de cloture</label>
+						<input type='date' name='dateCloture'  value="{{infoEvent['dateCloture']}}">
+					</div>
+
+					<div class='input-col'>
+						<label for='nombrePlace'> Nombre de place</label>
+						<input type='num' name='nombrePlace'  value="{{infoEvent['nombrePlace']}}">
+					</div>
+
+					<div class='input-col'>
+						<label for='prix'> Tarif</label>
+						<input type='num' name='prix'  value="{{infoEvent['prix']}}">
+					</div>
+
+					{# Infos event #}				
+				</section>
+
+				<!-- Parcours event -->
+				<section id='createMap' class='col right'>
+					<div class='block-head'>
+						<img src='{{rootUri}}/src/media/assets/datas/icones/info-round.png' alt='New'>
+						<h1> Parcours</h1>
+					</div>
+
+					<label class='switch-btn'>
+				        <input type='checkbox' id='switch_manage_mode' class='switch'/>
+						<span>
+							<span></span>
+						</span>
+					</label>
+					<h3> Activer le traçage manuel du parcours</h3>
+
+					<div class='input-dist'>
+						<input id='distance' type='num' name='distance' value="{{infoEvent['distance']}}">
+						<label for='distance'> Distance (km) </label>
+					</div>
+
+					<div id='map-container'>
+						<div id='mapAdd'>
+						</div>
+					</div>
+				</section>
+
+				<!-- Bouton form -->
+				<section id='form-btn'>
+
+					<section class='form-btn-input'>
+						<input type='submit' value="Modifier">
+					</section>
+
+					<section class='form-btn-input'>
+						<input type='reset' value='Reset'>
+					</section>
+				</section>
+			</form>
+		</section>
+	</section>
+{% endblock %}

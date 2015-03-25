@@ -1,0 +1,118 @@
+{% extends "main.html.twig" %}
+{% block main_content %}
+
+<!-- Page Content -->
+<section id='main'>
+
+<!-- Page Content -->
+<section id='searchForm'>
+	<!-- Title page -->
+	<div class='block-head'>
+		<img src='{{rootUri}}/src/media/assets/datas/icones/search-round.png' alt='Search'>
+		<h1> Recherche</h1>
+	</div>
+
+	<!-- Form -->
+	<form>
+		<!-- SearchBar -->
+		<div id='search-bar'>
+			<div class='input-text'>
+				<input type='text' name='tags' placeholder='Mots clés' autocomplete='off'/>
+				<input type="submit" value="Rechercher">
+			</div>
+		</div>
+
+		<!-- Search Options -->
+		<div id='options-search'>
+
+			<!-- Column type -->
+			<div class='col'>
+				<h3> Types</h3>
+				<div class='input-radio'>
+					<input type="radio" name="cat" value="Marathon">
+					<div class='radio'></div>
+					<label>Marathon</label>
+				</div>
+				<div class='input-radio'>
+					<input type="radio" name="cat" value="VTT">
+					<div class='radio'></div>
+					<label>VTT</label>
+				</div>
+			</div>
+
+			<!-- Column statut -->
+			<div class='col'>
+				<h3> Statut</h3>
+				<div class='input-radio'>
+					<input type="radio" name="statut" value="termine">
+					<div class='radio'></div>
+					<label>Terminé</label>
+				</div>
+				<div class='input-radio'>
+					<input type="radio" name="statut" value="cours">
+					<div class='radio'></div>
+					<label>En cours</label>
+				</div>
+				<div class='input-radio'>
+					<input type="radio" name="statut" value="venir">
+					<div class='radio'></div>
+					<label>A venir</label>
+				</div>
+			</div>
+
+			<!-- Column price -->
+			<div class='col'>
+				<h3>Prix</h3>
+				<div class='input-radio'>
+					<input type="radio" name="price" value="100">
+					<div class='radio'></div>
+					<label>&lt;100€</label>
+				</div>
+				<div class='input-radio'>
+					<input type="radio" name="price" value="300">
+					<div class='radio'></div>
+					<label>&lt;300€</label>
+				</div>
+				<div class='input-radio'>
+					<input type="radio" name="price" value="400">
+					<div class='radio'></div>
+					<label>&lt;400€</label>
+				</div>
+				<div class='input-radio'>
+					<input type="radio" name="price" value="500">
+					<div class='radio'></div>
+					<label>&lt;500€</label>
+				</div>
+			</div>
+		</div>
+			<h4 id='btn-display-options'> Afficher plus d'options </h4>
+		</form>
+	</section>
+
+<!-- Search results -->
+<section id='searchResults'>
+	<ul>
+		{% for event in events %}
+			<li>
+				<a href='{{rootUri}}/evenements/{{event.event.id}}'><img src='{{rootUri}}/src/media/assets/datas/images/{{event.event.idCategorie}}.png' alt='no image'></a>
+				<div class='results-info'>	
+					<a href='{{rootUri}}/evenements/{{event.event.id}}'><h2> {{event.event.titre}}</h2></a>
+					<div>
+						<h4>Organisé par: <strong> <a href='{{rootUri}}/organisateurs/profil/{{event.event.idOrganisateur}}'>{{event.linkOrg.organisateur.nom_structure}}</a> </strong></h4>
+						<h4>Date: <strong> {{event.event.dateEvenement}}</strong></h4>
+						<h4>Lieu: <strong> {{event.event.lieu}}</strong></h4>
+						<h4>Description: <strong> {{event.event.description}}</strong></h4>
+						<h4>Prix: <strong> {{event.event.prix}}</strong></h4>
+					</div>
+				</li>
+			{% endfor %}
+		</ul>
+
+		{# {% for link in links %}
+	    	<p>{{link.rel}} : {{link.href}}</p>
+	    {% endfor %} #}
+	</section>
+
+</section>
+
+{% endblock %}

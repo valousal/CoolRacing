@@ -1,0 +1,86 @@
+#panel-default{
+
+	#panel-login, #panel-inscription{
+		width: 13rem;
+		height: auto;
+		overflow-x: hidden;
+		overflow-y: scroll;
+		display: inline-block;
+		vertical-align: top;
+		box-sizing: border-box;
+		border-radius: 6px;
+		background-color: $main_color_darken;
+		margin: 0.5rem;
+		
+		.block-head{
+			width: 100%;
+			height: auto;
+			display: block;
+			box-sizing: border-box;
+			background-color: $main_color_darken_more;
+			color: white;
+			padding: 0.2rem 0rem;
+
+			img{
+				width: 1.4rem;
+				height: 1.4rem;
+				display: inline-block;
+				vertical-align: middle;
+				margin-left: 1rem;
+			}
+
+			h1{
+				width: 100%;
+				display: inline-block;
+				vertical-align: middle;
+				line-height: 2rem;
+				font-size: 1rem;
+				font-weight: normal;
+				text-align: center;
+				color: white;
+			}
+		}
+
+		.block-describ{
+			width: 100%;
+			height: auto;
+			display: block;
+			box-sizing: border-box;
+			color: white;
+			padding: 1rem;
+
+			p{
+				font-size: 0.8rem;
+				line-height: 1rem;
+				text-indent: 0.5rem;
+				color: white;
+			}
+
+			a{
+				width: 7rem;
+				height: 2rem;
+				display: block;
+				box-sizing: border-box;	
+				margin: 1rem auto;
+				background-color: $secondary_color;
+				border-radius: 0.3rem;
+				color: white;
+				font-weight: bold;
+				font-size: 0.9rem;
+				text-decoration: none;
+				text-align: center;
+				line-height: 2rem;	
+				cursor: pointer;
+
+				&:hover{
+					background-color: $secondary_color_darken;
+					color: white;
+				}
+			}
+		}
+	}
+
+	#panel-login{
+		margin-bottom: 1rem;
+	}
+}

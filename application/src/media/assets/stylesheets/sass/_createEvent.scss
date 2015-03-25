@@ -1,0 +1,263 @@
+#createEvent,#modifEvent{
+	width: 100%;
+	height: auto;
+	display: block;
+	box-sizing: border-box;
+
+	form{ 
+		font-size: 0;
+
+		.col{
+			width: 100%;
+			height: auto;
+			display: inline-block;
+			vertical-align: top;
+			box-sizing: border-box;	
+			background-color: white;
+			position: relative;
+			box-shadow: 0px 3px 3px #aaa;
+			overflow-x: hidden;
+			overflow-y: scroll; 
+			margin-bottom: 0.5rem;
+			padding-bottom: 1rem;
+
+			&.right{
+				height: auto;
+			}
+
+			.block-head{
+				width: 100%;
+				height: auto;
+				display: block;
+				box-sizing: border-box;
+				background-color: $main_color;
+				color: white;
+				padding: 0.2rem 0rem;
+				margin-bottom: 1rem;
+
+				h1{
+					width: auto;
+					display: inline-block;
+					vertical-align: middle;
+					line-height: 2rem;
+					font-size: 1rem;
+					font-weight: normal;
+					text-indent: 1rem;
+					color: white;
+				}
+
+				img{
+					width: 1.5rem;
+					height: 1.5rem;
+					display: inline-block;
+					vertical-align: middle;
+					margin-left: 1rem;
+				}
+			}
+
+			@media screen and (max-width: 65rem) {
+				display: block;
+				width: 100%;
+				height: auto;			
+			}
+
+
+			h2{
+				font-size: bold;
+				font-size: 1.2rem;
+				color: $darkGrey_10;
+				padding: 0.5rem 2.5rem 0rem;
+			}
+
+			hr{
+				margin-bottom: 1rem;
+			}
+
+			ul{
+				width: 50%;
+				height: auto;
+				display: inline-block;
+				vertical-align: top;
+				box-sizing: border-box;
+				list-style: none;
+
+				li{
+					font-size: 0.8rem;
+					font-weight: bold;
+					color: $grey;
+					text-align: left;
+					padding: 0.1rem 0rem 0rem 0rem;
+
+					small{
+						font-weight: normal;
+					}
+				}
+			}
+
+			#event-col-info-left{
+				padding: 1rem 1rem 1.5rem 2.5rem;
+			}
+
+			#event-col-info-right{
+				padding: 1rem 2.5rem 1.5rem 0.5rem;
+			}
+
+
+			div{
+				width: 100%;
+				height: auto;
+				display: block;
+				vertical-align: top;
+				box-sizing: border-box;	
+				padding: 0.5rem 1rem;
+
+				&.input-col{
+					width: auto;
+					display: inline-block;
+					vertical-align: top;
+				}
+
+				label{
+					display: block;
+					font-size: 1.1rem;
+					font-weight: normal;
+					color: $grey;
+					margin-bottom: 0.6rem;
+
+					b{
+						font-size: 1.3rem;
+					}
+				}
+
+				input[type='text'],input[type='num'],input[type='password'],input[type='mail'],input[type='tel'],input[type='date']{
+					width: 100%;
+					max-width: 30rem;
+					display: block;
+					box-sizing: border-box;	
+					border: 1px solid lightgrey;
+					font-size: 1rem;
+					text-indent: 5px;
+					padding: 3px;
+					color: $grey;
+
+					&:focus{
+						border-color: $secondary_color;
+					}
+				}
+
+				input[type='num'],input[type='date']{
+					width: 10rem;
+				}
+
+				textarea{
+					width: 100%;
+					max-width: 100%;
+					height: auto;
+					min-height: 20rem;
+					display: block;
+					box-sizing: border-box;
+					font-size: 0.8rem;
+					border: 1px solid lightgrey;
+					padding: 1rem;
+
+					&:focus{
+						border: 1px solid $secondary_color;
+					}
+				}
+
+				select{
+					width: 6rem;
+					height: 1.5rem;
+				}
+			}	
+		}
+
+		#form-btn{
+			width: 19rem;
+			height: auto;
+			display: block;
+			box-sizing: border-box;
+			margin: auto;
+			margin-top: 0.5rem;
+			margin-bottom: 0.5rem;
+
+			.form-btn-input:nth-child(1){
+				margin-right: 0.5rem;
+			}
+
+			.form-btn-input{
+				width: 9rem;
+				height: auto;
+				display: inline-block;
+				box-sizing: border-box;
+				margin: auto;
+				background-color: white;
+				box-shadow: 0px 3px 3px #aaa;
+				padding: 1rem;
+				text-align: center;
+
+				input{
+					width: 7rem;
+					height: 2rem;
+					display: inline-block;
+					box-sizing: border-box;	
+					font-weight: bold;
+					font-size: 0.9rem;
+				}
+
+				input[type='submit']{
+					background-color: $main_color;
+					color: white;
+					margin-right: 0.25rem;
+
+					&:hover{
+						cursor: pointer;
+						background-color: $secondary_color;
+					}
+				}
+
+				input[type='reset']{
+					background-color: white;
+					color: $main_color;
+					border: 1px solid $main_color;
+					margin-left: 0.25rem;
+
+					&:hover{
+						cursor: pointer;
+						color: $secondary_color;
+						border: 1px solid $secondary_color;
+					}
+				}
+
+				@media screen and (max-width: 20rem) {
+					display: block;
+					width: 100%;
+				}
+			}
+
+			@media screen and (max-width: 20rem) {
+				display: block;
+				width: 100%;
+
+				.form-btn-input:nth-child(1){
+					margin-bottom: 0.5rem;
+				}
+			}
+		}
+
+		@media screen and (max-width : 40em){
+			ul{
+				width: 100%;
+				display: block;
+			}
+
+			#event-col-info-left{
+				padding: 1rem 0.5rem 0rem 2.5rem;
+			}
+
+			#event-col-info-right{
+				padding: 1rem 0.5rem 1.5rem 2.5rem;
+			}
+		}
+	}
+}

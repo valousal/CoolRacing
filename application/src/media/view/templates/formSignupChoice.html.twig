@@ -1,0 +1,61 @@
+{% extends "main.html.twig" %}
+{% block main_content %}
+
+	<!-- Page Content -->
+	<section id='main'>
+
+		<!-- Participant Inscription Titre-->
+		<!-- <section id='inscriptionTitle'> -->
+
+			<!-- Title page -->
+			<!-- <div class='block-head'>
+				<img src='{{rootUri}}/src/media/assets/datas/icones/search-round.png' alt='Search'/>
+				<h1>Choix de l'inscription</h1>
+			</div>
+ -->
+			<!-- Describ page -->
+			<!-- <div class='block-describ'>
+				<p> Choix de votre inscription. Entant que participant vous pouvez....</p>
+			</div>
+		</section> -->
+	
+		<!-- Section choix inscription -->
+		<section id='choiceInscription'>
+
+			<!-- Info structure -->
+			<section class='col left choice'>
+				<!-- Title page -->
+				<div class='block-head'>
+					<img src='{{rootUri}}/src/media/assets/datas/icones/info-round.png' alt='Search'/>
+					<h1> Inscription participants</h1>
+				</div>
+
+				<div class='content'>
+					<img src='{{rootUri}}/src/media/assets/datas/icones/person.png'/>
+					<h1> Participant</h1>
+					<p> En que participant, vous pouvez vous inscrire aux différents événements et garder un historique de vos activités.</p>
+					<a href='{{rootUri}}/participants/signup'> S'inscrire</a>
+				</div>
+			</section>
+
+			<!-- Info responsable -->
+			<section class='col right choice'>
+
+				<!-- Title page -->
+				<div class='block-head'>
+					<img src='{{rootUri}}/src/media/assets/datas/icones/info-round.png' alt='Search'/>
+					<h1> Inscription organisateurs</h1>
+				</div>
+
+				<div class='content'>
+					<img src='{{rootUri}}/src/media/assets/datas/icones/group.png'/>
+					<h1> Organisateur</h1>
+					<p> En qu'organisateurs, vous pouvez vous créer aux des événements et gérer les inscriptions.</p>
+					<a href='{{rootUri}}/organisateurs/signup'> S'inscrire </a>
+				</div>
+
+			</section>
+
+		</section>
+	</section>
+{% endblock %}

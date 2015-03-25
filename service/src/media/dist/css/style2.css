@@ -1,0 +1,104 @@
+
+#picture{
+	margin: auto;
+}
+
+#jumbotron{
+	text-align: center;
+}
+
+.jumbotron{
+	background: url('http://www.mesacosan.com/media/articles/articles-utilisateurs/realiser-son-marathon-en-4h30-7452.jpg');
+	height: 290px;
+}
+
+hr{
+	margin-bottom: 100px;
+	border-top: 0;
+	border-bottom: 0;
+}
+
+#index{
+}
+
+.navbar{
+	margin-bottom: 0;
+}
+
+.row p{
+	padding-left: 5em;
+	padding-top: 3em;
+	font-size: 1.3em;
+}
+
+.row h1{
+	padding-left: 2em;
+}
+
+
+footer{
+	background-color:#e7e7e7;
+	height: 4em;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	text-align:center;
+}
+
+
+#main_form{
+	width: 40rem;
+	height: auto;
+	margin: 5rem auto 0rem;
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 0px 4px 4px lightgrey;
+}
+
+form{
+	width: 40rem;
+	height: auto;
+	display: block;
+	box-sizing: border-box;
+	padding: 2rem;
+	text-align: center;
+}
+
+button{
+	width: 9rem;
+	display: block;
+	margin: 1rem auto;
+	background-color: #F17113 !important;
+	border: none !important;
+	color: white !important;
+	font-weight: bold !important;
+}
+
+button:hover{
+	background-color: #CD5F10 !important;
+}
+
+
+.form-group label{
+	width: 100%;
+	text-align: left !important;
+	font-size: 1.8rem;
+	color: #484848;
+}
+
+
+@media screen and (max-width : 26.5rem){
+
+	.container-fluid{
+		padding: 0.5rem;
+	}
+
+	#main_form{
+		width: 100%;
+		margin-top: 0;
+	}
+
+	form{
+		width: 100%;
+	}
+}

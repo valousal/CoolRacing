@@ -1,0 +1,132 @@
+#createMap{
+	height: auto;
+	width: auto;
+	display: block;
+	box-sizing: border-box;
+	min-height: 30rem;
+
+	.switch-btn{
+		display: inline-block;
+		vertical-align: top;
+		box-sizing: border-box;
+		margin: 1rem 1rem 1rem 2rem;
+
+		input[type="checkbox"]{
+			cursor: pointer;
+			display: none;
+		}
+
+		input[type="checkbox"].switch + span {
+			display: inline-block;
+			box-sizing: border-box;
+			width: 90px;
+			height: 25px;
+			vertical-align: middle;
+			border-radius: 999px;
+			background-color: white;
+			border: 1px solid #DDDDDD;
+			-webkit-transition-duration: .4s;
+			-webkit-transition-property: background-color, box-shadow;
+			cursor: pointer;
+			padding: 2px;
+		}
+
+		input[type="checkbox"].switch:checked + span {
+			background-position: 0 0;
+			background-color: $secondary_color;
+		}
+
+		input[type="checkbox"].switch + span > span {
+			display: inline-block;
+			float: left;
+			width: 18px; 
+			height: 18px;
+			border-radius: 999px;
+			background: $secondary_color;
+			-webkit-transition-duration: 0.4s;
+			-webkit-transition-property: transform, background-color, box-shadow;
+			-moz-transition-duration: 0.4s;
+			-moz-transition-property: transform, background-color;
+			pointer-events: none;
+			margin-top: 1px;
+			margin-left: 1px;
+			vertical-align: top;
+		}
+
+		input[type="checkbox"].switch:checked + span > span {
+			-webkit-transform: translate3d(60px, 0, 0);
+			-moz-transform: translate3d(60px, 0, 0);
+			background-color: white;
+		}
+	}
+
+	.switch-btn + h3{
+		display: inline-block;
+		vertical-align: top;
+		font-size: 1rem;
+		color: $grey;
+		margin: 1rem;
+		line-height: 1.5rem;
+	}
+
+	.input-dist{
+		width: auto;
+
+		label{
+			width: auto;
+			display: inline-block !important;
+			vertical-align: top;
+			line-height: 1.5rem;
+			margin-left: 1.5rem;
+		}
+
+		input{
+			width: 5.5rem !important;
+			display: inline-block !important;
+			vertical-align: top;
+			margin-left: 1rem;
+		}
+	}
+
+	div{
+		box-shadow: none;
+	}
+
+	#map-container{
+		height: 100%;
+		min-height: 20rem;
+		width: 100%;
+		display: block;
+		box-sizing: border-box;
+		padding: 1rem;
+
+		#mapAdd{
+			height: 30rem;
+			width: 100%;
+			display: block;
+			box-sizing: border-box;
+
+			.leaflet-top, .leaflet-left{
+				width: auto;
+				height: auto;
+				position: absolute;
+				top: 0;
+				left: 0;
+				padding: 0;
+			}
+
+			.leaflet-bottom, .leaflet-right{
+				width: auto;
+				height: auto;
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				padding: 0;
+			}
+
+			.leaflet-routing-container{
+				display: none !important;
+			}
+		}
+	}
+}	

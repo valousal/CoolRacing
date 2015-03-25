@@ -1,0 +1,87 @@
+{% extends "main.html.twig" %}
+{% block main_content %}
+
+<!-- Page Content -->
+<section id='main'>
+
+	<!-- events list: popular -->
+	<section class='eventList'>
+		<button class='list-left' onclick="scrollDiv('popular', -182)"> &lt; </button>
+		<button class='list-right' onclick="scrollDiv('popular', 182)"> &gt; </button>
+		<div class='eventList-head'>
+			<img src='{{rootUri}}/src/media/assets/datas/icones/popular-round.png' alt='New'/>
+			<h1> Derniers ajoutés </h1>
+		</div>
+		<ul id='popular'>
+			{% for event in evenements %}
+				<li>
+					<a href='{{rootUri}}/evenements/{{event.evenement.id}}'>
+						<img src='{{rootUri}}/src/media/assets/datas/images/{{event.evenement.idCategorie}}.png' alt='no image'/>
+						<div>
+							<h2>{{event.evenement.titre}}</h2>
+							{# <p>Organisé par: <strong> {{event.linkOrg.organisateur.nom_structure}} </strong> </p> #}
+							<p>Lieu: <strong> {{event.evenement.lieu}}</strong></p>
+							<p>Date: <strong> {{event.evenement.dateEvenement}}</strong></p>
+							<p>Date Inscription: <strong> {{event.evenement.dateOuverture}}</strong></p>
+						</div>
+					</a>
+				</li>
+	    	{% endfor %}
+		</ul>
+	</section>
+
+	<!-- events list: new -->
+	<section class='eventList'>
+		<button class='list-left' onclick="scrollDiv('new', -182)"> &lt; </button>
+		<button class='list-right' onclick="scrollDiv('new', 182)"> &gt; </button>
+		<div class='eventList-head'>
+			<img src='{{rootUri}}/src/media/assets/datas/icones/new-round.png' alt='New'/>
+			<h1> VTT </h1>
+		</div>
+		<ul id='new'>
+			{% for eventCat1 in eventVTT %}
+				<li>
+					<a href='{{rootUri}}/evenements/{{eventCat1.id}}'>
+						<img src='{{rootUri}}/src/media/assets/datas/images/{{eventCat1.idCategorie}}.png' alt='no image'/>
+						<div>
+							<h2>{{eventCat1.titre}}</h2>
+							{# <p>Organisé par: <strong> {{eventCat1.linkOrg.organisateur.nom_structure}} </strong> </p> #}
+							<p>Lieu: <strong> {{eventCat1.lieu}}</strong></p>
+							<p>Date: <strong> {{eventCat1.dateEvenement}}</strong></p>
+							<p>Date Inscription: <strong> {{eventCat1.dateOuverture}}</strong></p>
+						</div>
+					</a>
+				</li>
+	    	{% endfor %}
+		</ul>
+	</section>
+
+
+	<!-- events list: new -->
+	<section class='eventList'>
+		<button class='list-left' onclick="scrollDiv('new', -182)"> &lt; </button>
+		<button class='list-right' onclick="scrollDiv('new', 182)"> &gt; </button>
+		<div class='eventList-head'>
+			<img src='{{rootUri}}/src/media/assets/datas/icones/new-round.png' alt='New'/>
+			<h1> Marathon </h1>
+		</div>
+		<ul id='new'>
+			{% for eventCat2 in eventMarathon %}
+				<li>
+					<a href='{{rootUri}}/evenements/{{eventCat2.id}}'>
+						<img src='{{rootUri}}/src/media/assets/datas/images/{{eventCat2.idCategorie}}.png' alt='no image'/>
+						<div>
+							<h2>{{eventCat2.titre}}</h2>
+							{# <p>Organisé par: <strong> {{eventCat2.linkOrg.organisateur.nom_structure}} </strong> </p> #}
+							<p>Lieu: <strong> {{eventCat2.lieu}}</strong></p>
+							<p>Date: <strong> {{eventCat2.dateEvenement}}</strong></p>
+							<p>Date Inscription: <strong> {{eventCat2.dateOuverture}}</strong></p>
+						</div>
+					</a>
+				</li>
+	    	{% endfor %}
+		</ul>
+	</section>
+
+</section>
+{% endblock %}

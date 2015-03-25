@@ -1,0 +1,21 @@
+{
+    "name": "coolracingapi/wads",
+    "description": "Projet tuteure licence CISIIE. Service/API CoolRacing, Salvestroni Valentin, Deladienee Paul, Winkel Loic, Arcuri Lucas 2014-2015",
+    "authors": [
+        {
+            "name": "WADS",
+            "email": "WADS@fai.com"
+        }
+    ],
+     "require": {
+        "slim/slim": "2.*",
+        "illuminate/database": "~4.2",
+        "twig/twig": "~1.0",
+        "league/oauth2-server": "~4.1"
+    },
+    "autoload":{
+    	"psr-0" : {
+    		"media\\" : "src"
+    	}
+    }
+}

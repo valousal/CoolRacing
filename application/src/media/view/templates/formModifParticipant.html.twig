@@ -1,0 +1,129 @@
+{% extends "main.html.twig" %}
+{% block main_content %}
+
+	<!-- Page Content -->
+	<section id='main'>
+
+		<!-- Participant Inscription Titre-->
+		<section id='modifTitle'>
+
+			<!-- Title page -->
+			<div class='block-head'>
+				<img src='{{rootUri}}/src/media/assets/datas/icones/info-round.png' alt='Search'>
+				<h1>Modification participant</h1>
+			</div>
+
+			<!-- Describ page -->
+			<div class='block-describ'>
+				<p> Remplisser le formulaire suivant pour modifier vos informations</p>
+			</div>
+		</section>
+			
+		<!-- Form inscription -->
+		<form id='modifForm' action='{{action}}' method='POST'>
+
+			<!-- Info perso -->
+			<section class='col left'>
+
+				<!-- Title page -->
+				<div class='block-head'>
+					<h1> Informations personnelles</h1>
+				</div>
+				
+				<div>
+					<label for='nom'>Nom </label>
+					<input type='text' name='nom' onblur="verifText($(this))" value="{{infoPart['nom']}}">
+				</div>
+
+				<div>
+					<label for='prenom'>Prenom</label>
+					<input type='text' name='prenom' onblur="verifText($(this))" value="{{infoPart['prenom']}}">
+				</div>
+
+				<div>
+					<label for='sexe'>Sexe</label>
+					<div class='input-radio'>
+						<input type='radio' name='sexe' value='M' checked>
+						<div class='radio'></div>
+						<label>Masculin</label>
+					</div>
+					<div class='input-radio'>
+						<input type='radio' name='sexe' value='F'>
+						<div class='radio'></div>
+						<label>Feminin</label>
+					</div>
+				</div>
+
+				<div>
+					<label for='dateNaissance'>Date de naissance</label>
+					<input type='date' name='dateNaissance' class='input-date' value="{{infoPart['dateNaissance']}}">
+				</div>
+
+				<div>
+					<label for='mailPrivate'>Mail privée</label>
+					<input type='mail' name='mailPrivate' class='input-mail'>
+				</div>
+
+				<div>
+					<label for='tel'>Telephone</label>
+					<input type='tel' name='tel' class='input-tel' value="{{infoPart['tel']}}">
+				</div>
+
+				<div id="adress">
+					<label for='type'>Adresse</label>
+					<input type='num' name='num' placeholder='N°' value="{{infoPart['adresse']['rue']}}">
+					<select name='type'>
+						<option>Rue</option>
+						<option>Boulevard</option>
+						<option>Impasse</option>
+					</select>
+					<input type='text' name='rue' placeholder='Adresse' class='input-text' value="{{infoPart['adresse']['rue']}}">
+					<input type='num' name='CP'  placeholder='Code postal' class='input-postal' value="{{infoPart['adresse']['cp']}}">
+					<input type='text' name='ville'  placeholder='Ville' class='input-text' value="{{infoPart['adresse']['ville']}}">
+				</div>
+			</section>
+
+			<!-- Infos profil -->
+			<section class='col right'>
+				<!-- Title page -->
+				<div class='block-head'>
+					<h1> Informations du profil</h1>
+				</div>
+
+				{# <div>
+					<label for='login'>Identifiant</label>
+					<input type='text' name='login' class='input-login'>
+				</div> #}
+
+				<div>
+					<label for='password'>Mot de passe</label>
+					<input type='password' name='password' class='input-mdp'>
+				</div>
+
+				<div>
+					<label for='password'>Confirmation mot de passe </label>
+					<input type='password' name='password-confirm' class='input-mdp-valid'>
+				</div>
+
+				<div>
+					<label for='mailPub'>Mail public</label>
+					<input type='mail' name='mailPub' class='input-mail' value="{{infoPart['mailPub']}}">
+				</div>
+			</section>
+			
+			<!-- Bouton form -->
+			<section id='form-btn'>
+				<input type="hidden" name="_METHOD" value="PUT"/>
+				<section class='form-btn-input'>
+					<input type='submit' value="Modifier">
+				</section>
+
+				<section class='form-btn-input'>
+					<input type='reset' value='Reset'>
+				</section>
+			</section>
+				
+		</form>
+
+	</section>
+{% endblock %}

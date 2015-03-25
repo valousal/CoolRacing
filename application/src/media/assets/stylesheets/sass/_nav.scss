@@ -1,0 +1,177 @@
+#nav{
+	width: 100%;
+	height: auto;
+	min-height: 3rem;
+	display: block;
+	box-sizing: border-box;
+	padding: 0rem;
+	background-color: $main_color_darken;
+	border-bottom: 1px solid $main_color_darken_more;
+	position: relative;
+	z-index: 999;
+
+	span#logo{
+		height: 2rem;
+		width: 11rem;
+		display: inline-block;
+		vertical-align: top;
+		box-sizing: border-box;
+		background-image: url('../../datas/images/logo.png');
+		background-size: 90%;
+		background-repeat: no-repeat;
+		margin: 0.5rem 1rem 0.5rem 3rem;
+	}
+
+
+
+	ul{	
+		width: calc(100% - 15rem);
+		box-sizing: border-box;
+		display: inline-block;
+		vertical-align: top;
+		background-color: $main_color_darken;
+		margin: auto;
+
+		#menu-tablet{
+			width: 3rem;
+			height: 3rem;
+			display: none;
+			box-sizing: border-box;
+			padding: 0;
+			font-size: 1rem;
+
+			img{
+				height: 3em;
+				width: 3em;
+				box-sizing: border-box;
+				padding: 0.6rem;
+				margin: auto;
+			}
+
+			&:hover{
+				background-color: $secondary_color;
+				cursor: pointer;
+			}
+		}
+
+
+		li{
+			height: 3rem;
+			width: 12rem;
+			display: inline-block;
+			vertical-align: top;
+			box-sizing: border-box;
+			font-size: 1rem;
+
+			a{
+				width:100%;
+				height: 3em;
+				display: block;
+				box-sizing: border-box;
+				color: white;
+				text-decoration: none;
+				text-align: center;
+				line-height: 3em;
+				&:hover,&:active{
+					background-color: $secondary_color;
+				}
+			}
+
+			label{
+				cursor: pointer;
+			}
+
+			img{
+				height: 3em;
+				width: 3em;
+				display: none;
+				box-sizing: border-box;
+				padding: 0.6rem;
+				margin: auto;
+			}
+		}
+	}
+
+	//CSS for middle screen:
+	@media screen and (max-width : 70em){
+		ul{
+			li{
+				width: 8rem;
+			}
+		}
+	}
+
+	@media screen and (max-width : 50em){
+		background-color: $main_color_darken;
+
+		span#logo{
+			width: 2rem;
+			background-image: url('../../datas/images/logo_mini.png');
+			margin: 0.5rem;
+		}
+
+		ul{
+			width: calc(100% - 3rem);
+			display: inline-block;
+			vertical-align: top;
+			box-shadow: none;
+
+			#menu-tablet{
+				display: inline-block;
+				vertical-align: top;
+
+				img{
+					display: block;
+				}
+			}
+		}
+	}
+
+	//CSS for tablet:
+	@media screen and (max-width : 40em){
+
+		ul{
+			li{
+				width: calc( 25% - 0.75rem) ;
+
+				label{
+					display: none;
+				}
+
+				img{
+					display: block;
+					padding: 0.8rem;
+				}
+			}
+		}
+	}
+
+	//CSS for smartphone:
+	@media screen and (max-width : 25em){
+		ul{
+			li{
+				img{
+					display: block;
+					padding: 0.9rem;
+				}
+			}
+		}
+	}
+
+	@media screen and (max-width : 18em){
+		ul{
+			li{
+				a{
+					padding: 0.5rem 0rem;
+				}
+
+				img{
+					height: 2em;
+					width: 2em;
+					display: block;
+					padding: 0.5rem;
+				}
+			}
+		}
+	}
+}

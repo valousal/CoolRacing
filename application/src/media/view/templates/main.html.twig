@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang='fr'>
+    <head>
+            <meta charset="utf-8">
+            <meta name="keywords" content="Sport, évènements, gestion, marathon" />
+            <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+            <title> CoolRacing</title>
+            <link rel='stylesheet'href="{{rootUri}}/src/media/assets/stylesheets/stylesheets/style.css">
+            <link rel='stylesheet' href='http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css' />
+            <link rel='stylesheet' href='{{rootUri}}/src/media/assets/node_modules/leaflet-routing-machine/css/leaflet-routing-machine.css' />
+            <script type='text/javascript' src='{{rootUri}}/src/media/assets/javascripts/jquery.js'></script>
+            <script type='text/javascript' src='{{rootUri}}/src/media/assets/javascripts/function.js'></script>
+            <script type='text/javascript' src='{{rootUri}}/src/media/assets/javascripts/listener.js'></script>
+    </head>
+    
+    <body>
+        <!-- Navigation Bar -->
+        {% include "_navigation.html.twig" %}
+
+        <!-- Control Panel -->
+        {% if session == true %}
+            {% include "_panel.html.twig" %} 
+        {% else %}
+            {% include "_panelDefault.html.twig" %}
+        {% endif %}
+
+        <!-- Fog -->
+         <span id='fog'></span>
+
+        <!-- Page Container -->
+        <section id="page">
+
+            {% block main_content %}
+
+            {% endblock %}
+
+            <!-- Footer -->
+            {% include "_footer.html.twig" %}
+
+        </section>
+    </body>
+
+
+    <script src='http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js'></script>
+    <script src='{{rootUri}}/src/media/assets/node_modules/leaflet-routing-machine/dist/leaflet-routing-machine.min.js'></script>
+    <script src='{{rootUri}}/src/media/assets/javascripts/map.js'> </script>
+</html>

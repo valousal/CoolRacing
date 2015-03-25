@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>CoolRacing Auth</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link type="text/css" rel="stylesheet" href="{{rootUri}}/src/media/dist/css/bootstrap.min.css">
+        <link type="text/css" rel="stylesheet" href="{{rootUri}}/src/media/dist/css/style.css">
+        <script src="{{rootUri}}/src/media/dist/js/jquery-2.1.1.min.js"></script>
+        <script src="{{rootUri}}/src/media/dist/js/bootstrap.min.js"></script>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    </head>
+    
+    <body> 
+        <div class="container-fluid"> 
+        	 <!--BLOCK CONTENT-->
+            <section id="maincontent">
+                {% block main_content %}
+                {% endblock %}
+            </section>
+
+            <!-- <footer>  -->
+            	<!--<hr> -->
+            	<!-- <p>An authentification service provided by <a href="{{rootUri}}/doc/">CoolRacing</a>.</p>
+            </footer> -->
+        </div>
+    </body>
+</html>

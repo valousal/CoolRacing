@@ -1,0 +1,20 @@
+{% extends "main.html.twig" %}
+{% block main_content %}
+	
+	<!-- Page Content -->
+	<section id='main'>
+		{# RECUPERE LE CLASSEMENT DE LEVENEMENT A METTRE EN FORME AUSSI #}
+		{% for participant in classement %}
+			<a href='{{rootUri}}/participants/{{participant.id}}'>{{participant.nom}}</a>
+			{{participant.prenom}}
+			{{participant.sexe}}
+			{{participant.dateNaissance}}
+			{{participant.position}}
+			{{participant.tempsTotal}}
+			{{participant.statut}}
+		{% endfor %}
+
+	</section>
+
+
+{% endblock %}

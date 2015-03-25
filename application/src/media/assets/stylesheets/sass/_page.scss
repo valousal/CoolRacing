@@ -1,0 +1,16 @@
+#page{
+	width: calc(100% - 15rem);
+	height: calc(100% - 3rem);
+	overflow-x: hidden;
+	overflow-y: scroll; 
+	display: inline-block;
+	vertical-align: top;
+	box-sizing: border-box;
+	white-space: normal;
+	position: relative;
+	z-index: 1;
+
+	@media screen and (max-width : 50rem){
+		width: 100%;
+	}
+}

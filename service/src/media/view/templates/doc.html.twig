@@ -1,0 +1,1613 @@
+{% extends "main.html.twig" %}
+{% block main_content %}
+<div class="container-fluid pts">
+	    <div class="row-fluid">
+	        <div class="span4">
+	            <div class="well well-small">
+	                <ul class="nav nav-list">
+	                						<li class="nav-header"><a href="#Authentification">Authentification</a></li>
+	                							<li class="nav-page"><a href="#Authentification-ROwner-Form">Formulaire d'identification utilisateur - Jeton d'échange</a></li>
+	                							<li class="nav-page"><a href="#Authentification-accessToken">Récupérer le jeton d'accés</a></li>
+	                							<li class="nav-page"><a href="#delete-accessToken">Détruire le jeton d'accés</a></li>
+	                							<li class="nav-page"><a href="#infos_users">Récupérer les infos utilisateurs</a></li>
+	                                        <li class="nav-header"><a href="#Events">Evènements</a></li>
+	                                        	<li class="nav-page"><a href="#Events-Add">Ajouter un évènement</a></li>
+	                                        	<li class="nav-page"><a href="#Events-List">Lister les évènements</a></li>
+	                                        	<li class="nav-page"><a href="#Events-Go">Accèder à un évènement</a></li>
+	                                        	<li class="nav-page"><a href="#Events-Mod">Modifier un évènement</a></li>
+	                                        	<li class="nav-page"><a href="#Events-Del">Supprimer un évènement</a></li>
+	                                        	<li class="nav-page"><a href="#Events-Register-Part">Inscrire un participant à un évènement</a></li>
+	                                        	<li class="nav-page"><a href="#Events-List-Part">Récupérer la liste des participants d'un évènement</a></li>
+	                                        	<li class="nav-page"><a href="#Events-Orga">Récupérer l'organisateur de l'évènement</a></li>
+	                                        	<li class="nav-page"><a href="#Events-Class">Récupérer le classement d'un évènement</a></li>
+	                                        	<li class="nav-page"><a href="#Events-Class-Part">Récupérer le classement d'un participant à un évènement donné</a></li>
+	                                        	<li class="nav-page"><a href="#Events-Class-Mod">Générer/mettre à jour le classement d'un évènement</a></li>
+
+	                                        <li class="nav-header"><a href="#Participants">Participants</a></li>
+	                                        	<li class="nav-page"><a href="#Participants-Add">Inscription : Ajouter un participant</a></li>
+	                                        	<li class="nav-page"><a href="#Participants-List">Récupérer tous les participants</a></li>
+	                                        	<li class="nav-page"><a href="#Participants-ID">Récupérer un participant par son ID</a></li>
+	                                        	<li class="nav-page"><a href="#Participants-Search">Rechercher un participant</a></li>
+	                                        	<li class="nav-page"><a href="#Participants-Hist">Récupérer l'historique des évènements d'un participant</a></li>
+	                                        	<li class="nav-page"><a href="#Participants-Mod">Modifier un participant</a></li>
+	                                        	<li class="nav-page"><a href="#Participants-Del">Supprimer un participant</a></li>
+	                                        	
+	                                        	
+
+	                                        <li class="nav-header"><a href="#Organisateurs">Organisateurs</a></li>
+	                                        	<li class="nav-page"><a href="#Organisateurs-Add">Inscription : Ajouter un organisateur</a></li>
+	                                        	<li class="nav-page"><a href="#Organisateurs-List">Récupérer tous les organisateurs</a></li>
+	                                        	<li class="nav-page"><a href="#Organisateurs-ID">Récupérer un organisateur par son ID</a></li>
+	                                        	<li class="nav-page"><a href="#Organisateurs-Search">Rechercher un organisateur</a></li>
+	                                        	<li class="nav-page"><a href="#Organisateurs-Hist">Récupérer l'historique des évènements d'un organisateur</a></li>
+	                                        	<li class="nav-page"><a href="#Organisateurs-Mod">Modifier un organisateur</a></li>
+	                                        	<li class="nav-page"><a href="#Organisateurs-Del">Supprimer un organisateur</a></li>
+	                                        	
+
+	                                        <li class="nav-header"><a href="#Categories">Catégories</a></li>
+	                                        	<li class="nav-page"><a href="#Categories-Add">Ajouter une nouvelle catégorie</a></li>
+	                                        	<li class="nav-page"><a href="#Categories-List">Lister les catégories</a></li>
+	                                        	<li class="nav-page"><a href="#Categories-ID">Récupérer une catégorie par son ID</a></li>
+	                                        	<li class="nav-page"><a href="#Categories-List-Events">Récupérer tous les évènements d'une catégorie</a></li>
+	                                        	<li class="nav-page"><a href="#Categories-Mod">Modifier une catégorie</a></li>
+	                                        	<li class="nav-page"><a href="#Categories-Del">Supprimer une catégorie</a></li>
+
+	                                        <li class="nav-header"><a href="#Adresses">Adresses</a></li>
+	                                        	<li class="nav-page"><a href="#Adresses-List">Lister les adresses</a></li>
+	                                        	<li class="nav-page"><a href="#Adresses-Mod">Mettre à jour une adresse</a></li>
+	                                        	<li class="nav-page"><a href="#Adresses-Del">Supprimer une adresse</a></li>
+	                                        
+
+	                </ul>
+	            </div>
+	        </div>
+
+			<div class="span8">
+				<strong>Lexique</strong><br/>
+				<ul class="list-group"> 
+					<li class="list-group-item">[] : Signifie que le paramètre est optionel</li>
+				</ul>
+				<strong>Préambule</strong><br/>
+				<p>
+                	<code>GET - coolracing/service/doc/signin</code>
+                	<br/>Formulaire pour s'enregistrer en tant que Client et obtenir un Token d'accès
+				</p>
+
+				<p>
+					Toutes les requêtes doivent contenir le paramètre <strong>client_access_token</strong><br/>
+					Les requêtes nécessitant d'être authentifiés requiert le paramètre <strong>accessToken</strong> avec les scopes suffisants.
+				</p>
+
+				<p>
+					Toute les données envoyées en POST ou PUT doivent être formatées en <strong>JSON</strong>
+				</p>
+				<section class="page-section" id="Authentification">
+		                <h1 class="page-header">Authentification</h1>
+		                <p>
+		                	CoolRacing fourni un service basé sur le protocole <a href="http://oauth.net/2/">OAuth2.0</a>.
+		                </p>
+		                <article class="page-article" id="Authentification-ROwner-Form">
+		                	<header>
+			                	<h2 class="page-article-header">Formulaire d'identification utilisateur - Jeton d'échange</h2>
+			                </header>
+			                	<p>
+				                	<code>GET - coolracing/service/oauth/form_signin</code>
+								</p>
+								<p>Affiche un formulaire de connection pour que l'utilisateur authorise l'utilisation de ses données par le client. Renvoi un jeton d'échange en cas de succés. </p>
+								<p>
+									<strong>Paramètres requis :</strong>
+									<ul class="list-group"> 
+										<li class="list-group-item">url_redirect : L'url fournie vers laquelle le jeton d'échange sera envoyé</li>
+										<li class="list-group-item">id_client : L'id client fourni au moment de votre inscription</li>
+									</ul>
+									<strong>Paramètres retournés :</strong></br>
+									Le serveur vous redirige vers l'url fournie précédemment avec les paramètres suivants :
+									<ul class="list-group"> 
+										<li class="list-group-item">auth_code : Le jeton d'échange</li>
+										<li class="list-group-item">url_accessToken : L'url du service pour échanger le Jeton d'échange contre le Token d'accès</li>
+									</ul>
+								</p>	
+			                <div class="page-article-footer">
+			                    <a class="btn" href="#top">Haut de la page <i class="icon-arrow-up"></i></a>
+			                </div>
+		               	</article>
+		               	<article class="page-article" id="Authentification-accessToken">
+		                	<header>
+			                	<h2 class="page-article-header">Récupérer le token d'accés</h2>
+			                </header>
+			                	<p>
+				                	<code>GET - coolracing/service/oauth/exangeTokenAccess</code>
+								</p>
+								<p>Fourni le token d'accès en échange du Jeton d'échange </p>
+								<p>
+									<strong>Paramètres requis :</strong>
+									<ul class="list-group"> 
+										<li class="list-group-item">id_client : L'id client fourni au moment de votre inscription</li>
+										<li class="list-group-item">client_secret : La chaine de caractère secrète fournie au moment de l'inscription</li>
+										<li class="list-group-item">url_redirect : L'url fournie vers laquelle le token d'accés sera envoyé</li>
+										<li class="list-group-item">auth_code : Le jeton d'échange précédemment généré</li>
+									</ul>
+									<strong>Paramètres retournés :</strong></br>
+									Le serveur vous redirige vers l'url fournie précédemment avec les paramètres suivants :
+									<ul class="list-group"> 
+										<li class="list-group-item">accessToken : Le token d'accès</li>
+									</ul>
+								</p>	
+			                <div class="page-article-footer">
+			                    <a class="btn" href="#top">Haut de la page <i class="icon-arrow-up"></i></a>
+			                </div>
+		               	</article>
+		               	<article class="page-article" id="delete-accessToken">
+		                	<header>
+			                	<h2 class="page-article-header">Détruire le token d'accés</h2>
+			                </header>
+			                	<p>
+				                	<code>GET - coolracing/service/oauth/disconnect</code>
+								</p>
+								<p>Détruit le token d'accés coté service</p>
+								<p>
+									<strong>Paramètres requis :</strong>
+									<ul class="list-group"> 
+										<li class="list-group-item">accessToken : Le token d'accès utilisateur</li>
+									</ul>
+								</p>	
+			                <div class="page-article-footer">
+			                    <a class="btn" href="#top">Haut de la page <i class="icon-arrow-up"></i></a>
+			                </div>
+		               	</article>   
+		               	<article class="page-article" id="infos_users">
+		                	<header>
+			                	<h2 class="page-article-header">Récupérer les infos utilisateurs</h2>
+			                </header>
+			                	<p>
+				                	<code>GET - coolracing/service/oauth/infos_users</code>
+								</p>
+								<p>Récupère les infos utiles de l'utilisateur authentifié</p>
+								<p>
+									<strong>Paramètres requis :</strong>
+									<ul class="list-group"> 
+										<li class="list-group-item">accessToken : Le token d'accès utilisateur</li>
+									</ul>
+									<strong>Paramètres retournés :</strong></br>
+									<ul class="list-group"> 
+										<li class="list-group-item">id : id utilisateur</li>
+										<li class="list-group-item">login : login utilisateur</li>
+										<li class="list-group-item">type : type utilisateur (participant ou organisateur</li>
+									</ul>
+								</p>	
+			                <div class="page-article-footer">
+			                    <a class="btn" href="#top">Haut de la page <i class="icon-arrow-up"></i></a>
+			                </div>
+		               	</article>       
+		        </section>
+		        <section class="page-section" id="Events">
+		                <h1 class="page-header">Evènements</h1>
+
+		                <article class="page-article" id="Events-Add">
+		                	<header>
+			                	<h2 class="page-article-header">Ajouter un évènement</h2>
+			                </header>
+			                	<p>
+				                	<code>POST - serveur/coolracing/service/api/evenements</code>
+								</p>
+
+								<p>		
+Récupère les données entrées ainsi que la date de création puis les attribue à un nouvel objet "évènement" avant de l'enregistrer dans la base de données. Retourne ensuite un tableau récapitulatif de ces données.
+								</p>
+
+<strong>Paramètres requis :</strong>
+<ul class="list-group"> 
+	<li class="list-group-item">titre : Titre de l'évènement</li>
+	<li class="list-group-item">description : Description de l'évènement</li>
+	<li class="list-group-item">lieu : Le token d'accès utilisateur</li>
+	<li class="list-group-item">dateCloture : Date de cloture des inscriptions ("YYYY-mm-dd")</li>
+	<li class="list-group-item">dateOuverture : Date d'ouverture des inscriptions ("YYYY-mm-dd")</li>
+	<li class="list-group-item">dateEvenement : Date à laquelle se déroule l'évenement ("YYYY-mm-dd")</li>
+	<li class="list-group-item">nombrePlace : Nombre de places</li>
+	<li class="list-group-item">prix : Prix des places</li>
+	<li class="list-group-item">distance : Distance totale de l'épreuve</li>
+	<li class="list-group-item">id_organisateur : Id de la personne organisant l'épreuve</li>
+
+</ul>
+
+<strong class="btn exemple-window">Exemple de résultat :</strong>
+									<pre class="exemple">
+EXEMPLE
+									</pre>
+			                <div class="page-article-footer">
+			                    <a class="btn" href="#top">Haut de la page <i class="icon-arrow-up"></i></a>
+			                </div>
+		               	</article>
+
+		               	<article class="page-article" id="Events-List">
+		               		<header>
+			                	<h2 class="page-article-header">Lister les évènements</h2>
+			                </header>
+			                	<p>
+				                	<code>GET - serveur/coolracing/service/api/evenements</code>
+								</p>
+
+								<p>		
+Retourne un tableau contenant toutes les données relatives aux évènements.
+								</p>
+
+<strong>Paramètres requis :</strong>
+<ul class="list-group"> 
+	<li class="list-group-item">[price] : Recherche un évènement via le prix de ses places </li>
+	<li class="list-group-item">[cat] : Recherche un évènement via sa catégorie</li>
+	<li class="list-group-item">[tags]: Recherche un évènement via une chaine de caractère présente dans le titre </li>
+	<li class="list-group-item">[statut]: Recherche un évènement via son statut </li>
+</ul>
+
+<strong class="btn exemple-window">Exemple de résultat :</strong>
+									<pre class="exemple">
+{
+    "evenements": [
+        {
+            "evenement": {
+                "id": 20,
+                "titre": "VTT de descente",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vitae eros molestie, iaculis quam non, laoreet ligula. Donec ornare semper nibh, eget dignissim eros facilisis quis. Vivamus finibus, nibh non porta hendrerit, dolor turpis vulputate ma",
+                "lieu": "La Bresse",
+                "prix": 13,
+                "idOrganisateur": 32,
+                "idCategorie": 1,
+                "idStatut": 1,
+                "dateEvenement": "2015-02-05",
+                "dateOuverture": "2014-08-02",
+                "dateCloture": "2014-10-01"
+            },
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "http://coolracing/service/api/evenements/20"
+                },
+                {
+                    "rel": "organisateur",
+                    "href": "http://coolracing/service/api/organisateurs/32"
+                }
+            ]
+        },
+        {
+            "evenement": {
+                "id": 19,
+                "titre": "VTT Run",
+                "description": "VTT RUN IN LYON",
+                "lieu": "Lyon",
+                "prix": 249,
+                "idOrganisateur": 32,
+                "idCategorie": 1,
+                "idStatut": 1,
+                "dateEvenement": "2017-11-01",
+                "dateOuverture": "2015-01-01",
+                "dateCloture": "2015-08-01"
+            },
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "http://coolracing/service/api/evenements/19"
+                },
+                {
+                    "rel": "organisateur",
+                    "href": "http://coolracing/service/api/organisateurs/32"
+                }
+            ]
+        },
+    ],
+    "links": [
+        {
+            "rel": "prev",
+            "href": "http://coolracing/service/api/evenements/?limit=10&offset=150"
+        },
+        {
+            "rel": "next",
+            "href": "http://coolracing/service/api/evenements/?limit=10&offset=0"
+        },
+        {
+            "rel": "first",
+            "href": "http://coolracing/service/api/evenements/?limit=10&offset=150"
+        },
+        {
+            "rel": "last",
+            "href": "http://coolracing/service/api/evenements/?limit=10&offset=4"
+        }
+    ]
+}
+									</pre>
+
+			                <div class="page-article-footer">
+			                    <a class="btn" href="#top">Haut de la page <i class="icon-arrow-up"></i></a>
+			                </div>
+		               	</article>
+
+		               	<article class="page-article" id="Events-Go">
+		               		<header>
+			                	<h2 class="page-article-header">Accèder à un évènement</h2>
+			                </header>
+			                	<p>
+				                	<code>GET - serveur/coolracing/service/api/evenements/:id
+</code>
+								</p>
+
+								<p>		
+Prends en paramètre l'id de l'évènement sélectionné afin de rediriger vers la page correspondante, tout en récupérant les différentes informations de l'évènement. </p>
+<strong>Paramètres requis :</strong>
+<ul class="list-group"> 
+	<li class="list-group-item">id : Id de l'évènement auquel vous souhaitez accéder</li>
+</ul>
+
+<strong class="btn exemple-window">Exemple de résultat :</strong>
+									<pre class="exemple">
+{
+    "evenement": {
+        "id": 17,
+        "titre": "Course du quinté +",
+        "dateCreation": "2015-03-19",
+        "description": "Course du quinté + à poney et en VTT\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultricies iaculis nibh lobortis vestibulum. Maecenas et porttitor purus. Maecenas vestibulum lorem ac volutpat feugiat. Sed quis magna scelerisque, sod",
+        "lieu": "Vittel",
+        "dateCloture": "2015-11-05",
+        "dateOuverture": "2015-06-01",
+        "dateEvenement": "2016-07-08",
+        "session": null,
+        "nombrePlace": 347,
+        "prix": 30,
+        "distance": "42",
+        "statut": "venir",
+        "categorie": "VTT"
+    },
+    "links": [
+        {
+            "rel": "organisateur",
+            "href": "http://coolracing/service/api/organisateurs/31"
+        },
+        {
+            "rel": "participants",
+            "href": "http://coolracing/service/api/evenements/17/participants"
+        },
+        {
+            "rel": "categorie",
+            "href": "http://coolracing/service/api/categorie/1"
+        }
+    ]
+}
+									</pre>
+			                <div class="page-article-footer">
+			                    <a class="btn" href="#top">Haut de la page <i class="icon-arrow-up"></i></a>
+			                </div>
+		               	</article>
+
+		               	<article class="page-article" id="Events-Mod">
+		               		<header>
+			                	<h2 class="page-article-header">Modifier un évènement</h2>
+			                </header>
+			                	<p>
+				                	<code>PUT - serveur/coolracing/service/api/evenements/:id
+</code>
+								</p>
+
+								<p>		
+Récupère les données entrées puis prends en paramètre l'id de l'évènement sélectionné afin de modifier les données correspondantes et de les enregistrer dans la base de données. Retourne ensuite un tableau récapitulatif de ces données. </p>
+
+<strong>Paramètres requis :</strong>
+<ul class="list-group"> 
+	<li class="list-group-item">id_organisateur : Id de la personne organisant l'épreuve</li>
+	<li class="list-group-item">titre : Titre de l'évènement</li>
+	<li class="list-group-item">description : Description de l'évènement</li>
+	<li class="list-group-item">lieu : Le token d'accès utilisateur</li>
+	<li class="list-group-item">dateCloture : Date de cloture des inscriptions ("YYYY-mm-dd")</li>
+	<li class="list-group-item">dateOuverture : Date d'ouverture des inscriptions ("YYYY-mm-dd")</li>
+	<li class="list-group-item">dateEvenement : Date à laquelle se déroule l'évenement ("YYYY-mm-dd")</li>
+	<li class="list-group-item">nombrePlace : Nombre de places</li>
+	<li class="list-group-item">prix : Prix des places</li>
+	<li class="list-group-item">distance : Distance totale de l'épreuve</li>
+	<li class="list-group-item">id_organisateur : Id de la personne organisant l'épreuve</li>
+</ul>
+
+<strong class="btn exemple-window">Exemple de résultat :</strong>
+									<pre class="exemple">
+EXEMPLE
+									</pre>
+			                <div class="page-article-footer">
+			                    <a class="btn" href="#top">Haut de la page <i class="icon-arrow-up"></i></a>
+			                </div>
+		               	</article>
+
+		               	<article class="page-article" id="Events-Del">
+		               		<header>
+			                	<h2 class="page-article-header">Supprimer un évènement</h2>
+			                </header>
+			                	<p>
+				                	<code>DELETE - serveur/coolracing/service/api/evenements/:id
+</code>
+								</p>
+
+								<p>		
+Récupère l'id de l'évènement afin de le supprimer de la base de données. Retourne un tableau confirmant la supression. </p>
+
+<strong>Paramètres requis :</strong>
+<ul class="list-group"> 
+	<li class="list-group-item">id : Id de l'évènement que vous souhaitez supprimer</li>
+</ul>
+
+<strong class="btn exemple-window">Exemple de résultat :</strong>
+									<pre class="exemple">
+EXEMPLE
+									</pre>
+			                <div class="page-article-footer">
+			                    <a class="btn" href="#top">Haut de la page <i class="icon-arrow-up"></i></a>
+			                </div>
+		               	</article>
+
+		               	<article class="page-article" id="Events-Register-Part">
+		               		<header>
+			                	<h2 class="page-article-header">Inscrire un participant à un évènement</h2>
+			                </header>
+			                	<p>
+				                	<code>POST - serveur/coolracing/service/api/evenements/:id/participants
+</code>
+								</p>
+
+								<p>		
+Récupère l'id de l'évènement concerné afin d'y inscrire un participant. Un nouvel objet "participe" représentant la participation est créé, les informations entrées dans le formulaire lui sont attribuées et il est alors sauvegardé dans la base de données. Un dossard est alors généré pour ce participant en fonction du nombre de places. </p>
+
+<strong>Paramètres requis :</strong>
+<ul class="list-group"> 
+	<li class="list-group-item">id_participant : Id de l'utitlisateur que vous souhaitez inscire à l'évènement</li>
+	<li class="list-group-item">[sessionDepart] : L'identifiant de la session de départ</li>
+	<li class="list-group-item">[sasDepart] : L'identifiant du sas de départ</li>
+	<li class="list-group-item">[certificatMedical] : certificat autorisant l'utilisateur à participer à l'évènement</li>
+	<li class="list-group-item">[club] : Le club dont le participant est licencié</li>
+</ul>
+
+<strong class="btn exemple-window">Exemple de résultat :</strong>
+									<pre class="exemple">
+EXEMPLE
+									</pre>
+			                <div class="page-article-footer">
+			                    <a class="btn" href="#top">Haut de la page <i class="icon-arrow-up"></i></a>
+			                </div>
+		               	</article>
+
+		               	<article class="page-article" id="Events-List-Part">
+		               		<header>
+			                	<h2 class="page-article-header">Récupérer la liste des participants d'un évènement</h2>
+			                </header>
+			                	<p>
+				                	<code>GET - serveur/coolracing/service/api/evenements/:id/participants
+</code>
+								</p>
+
+								<p>		
+Récupère l'id de l'évènement concerné puis retourne dans un tableau les informations de tous les participants à l'épreuve. 
+->select('id','nom','prenom','dateNaissance','dateInscription','sexe','description','mailPub','tel') </p>
+
+<strong>Paramètres requis :</strong>
+<ul class="list-group"> 
+	<li class="list-group-item">id : Id de l'évènement concerné</li>
+</ul>
+
+<strong class="btn exemple-window">Exemple de résultat :</strong>
+									<pre class="exemple">
+{
+    "participants": [
+        {
+            "participant": {
+                "id": 6,
+                "nom": "Dupont",
+                "prenom": "Gerard",
+                "dateNaissance": "1980-03-23",
+                "dateInscription": "2015-03-19",
+                "sexe": "M",
+                "description": "",
+                "mailPub": "gerard@fai.com",
+                "tel": "0606060606",
+                "pivot": {
+                    "idEvent": 18,
+                    "idParticipants": 6,
+                    "dossard": "212",
+                    "sessionDepart": "Prem's",
+                    "sasDepart": "Prem's",
+                    "certificatMedical": "",
+                    "club": "PasDeClub"
+                }
+            },
+            "links": {
+                "rel": "self",
+                "href": "http://coolracing/service/api/participants/6"
+            }
+        }
+    ],
+    "links": [
+        {
+            "rel": "prev",
+            "href": "http://coolracing/service/api/evenements/?limit=10&offset=150"
+        },
+        {
+            "rel": "next",
+            "href": "http://coolracing/service/api/evenements/?limit=10&offset=0"
+        },
+        {
+            "rel": "first",
+            "href": "http://coolracing/service/api/evenements/?limit=10&offset=150"
+        },
+        {
+            "rel": "last",
+            "href": "http://coolracing/service/api/evenements/?limit=10&offset=1"
+        },
+        {
+            "rel": "self",
+            "href": "http://coolracing/service/api/evenements/18"
+        }
+    ]
+}
+									</pre>
+			                <div class="page-article-footer">
+			                    <a class="btn" href="#top">Haut de la page <i class="icon-arrow-up"></i></a>
+			                </div>
+		               	</article>
+
+		               	<article class="page-article" id="Events-Orga">
+		               		<header>
+			                	<h2 class="page-article-header">Récupérer l'organisateur de l'évènement</h2>
+			                </header>
+			                	<p>
+				                	<code>GET - serveur/coolracing/service/api/evenements/:id/organisateur
+</code>
+								</p>
+
+								<p>		
+Récupère l'id de l'évènement concerné puis retourne dans un tableau les informations liées à son organisateur. </p>
+
+<strong>Paramètres requis :</strong>
+<ul class="list-group"> 
+	<li class="list-group-item">id : Id de l'évènement concerné</li>
+</ul>
+
+<strong class="btn exemple-window">Exemple de résultat :</strong>
+									<pre class="exemple">
+{
+    "organisateur": {
+        "id": 31,
+        "nom_structure": "CoursPoney",
+        "forme_juridique": "Association",
+        "nomResponsable": "Dupont",
+        "prenomResponsable": "Derrick",
+        "dateInscription": "2015-03-19",
+        "login": "CoursPoney",
+        "mailPub": "poney@poney.fr",
+        "tel": "0606060606",
+        "mailResponsable": "poney@poney.fr",
+        "adresse": {
+            "id": 15,
+            "num": "13",
+            "type": "Boulevard",
+            "rue": "grand rue",
+            "cp": "65000",
+            "ville": "Toulouse"
+        }
+    },
+    "links": {
+        "rel": "evenements",
+        "href": "http://coolracing/service/api/organisateurs/31/evenements"
+    }
+}
+									</pre>
+			                <div class="page-article-footer">
+			                    <a class="btn" href="#top">Haut de la page <i class="icon-arrow-up"></i></a>
+			                </div>
+		               	</article>
+
+		               	<article class="page-article" id="Events-Class">
+		               		<header>
+			                	<h2 class="page-article-header">Récupérer le classement d'un évènement</h2>
+			                </header>
+			                	<p>
+				                	<code>GET - serveur/coolracing/service/api/evenements/:id/classement
+</code>
+								</p>
+
+								<p>		
+Récupère l'id de l'évènement concerné. Retourne dans un tableau les données des participants liées à l'épreuve, triées par temps.
+
+->orderBy('tempsTotal') </p>
+
+<strong>Paramètres requis :</strong>
+<ul class="list-group"> 
+	<li class="list-group-item">id : Id de l'évènement concerné</li>
+</ul>
+
+<strong class="btn exemple-window">Exemple de résultat :</strong>
+									<pre class="exemple">
+{
+    "0": {
+        "id": 6,
+        "nom": "Dupont",
+        "prenom": "Gerard",
+        "sexe": "M",
+        "dateNaissance": "1980-03-23",
+        "licence": "",
+        "position": 6,
+        "tempsTotal": "13:54:56",
+        "tempsIntermediaire": "",
+        "statut": "fini",
+        "links": {
+            "rel": "self",
+            "href": "http://coolracing/service/api/participants/6"
+        }
+    },
+    "evenement": {
+        "dateEvenement": "2015-02-05"
+    }
+}
+									</pre>
+			                <div class="page-article-footer">
+			                    <a class="btn" href="#top">Haut de la page <i class="icon-arrow-up"></i></a>
+			                </div>
+		               	</article>
+
+		               	<article class="page-article" id="Events-Class-Part">
+		               		<header>
+			                	<h2 class="page-article-header">Récupérer le classement d'un participant à un évènement donné</h2>
+			                </header>
+			                	<p>
+				                	<code>GET - serveur/coolracing/service/api/evenements/:id/participants/:id/classement
+</code>
+								</p>
+
+								<p>		
+Récupère l'id de l'évènement (id_e de la table "participe") et celui du participant. Récupère ensuite le classement de l'évènement et sélectionne les informations relatives au participant désigné par l'id (id_p de la table "participe") afin de les retourner dans un tableau. </p>
+
+<strong>Paramètres requis :</strong>
+<ul class="list-group"> 
+	<li class="list-group-item">premier id : Id de l'évènement concerné</li>
+	<li class="list-group-item">second id : Id du participant concerné</li>
+</ul>
+
+<strong class="btn exemple-window">Exemple de résultat :</strong>
+									<pre class="exemple">
+{
+    "participant": {
+        "idParticipants": 6,
+        "position": 6,
+        "tempsTotal": "13:54:56",
+        "tempsIntermediaire": "",
+        "statut": "fini"
+    },
+    "links": {
+        "rel": "self",
+        "href": "http://coolracing/service/api/participants/6"
+    }
+}
+									</pre>
+			                <div class="page-article-footer">
+			                    <a class="btn" href="#top">Haut de la page <i class="icon-arrow-up"></i></a>
+			                </div>
+		               	</article>
+		                
+		        </section>
+
+		        <section class="page-section" id="Participants">
+		                <h1 class="page-header">Participants</h1>
+
+		                <article class="page-article" id="Participants-Add">
+		                	<header>
+			                	<h2 class="page-article-header">Inscription : Ajouter un participant</h2>
+			                </header>
+			                	<p>
+				                	<code>POST - serveur/coolracing/service/api/participants</code>
+								</p>
+
+								<p>		
+Récupère les données entrées ainsi que la date d'inscription puis les attribue à un nouvel objet "participant" avant de l'enregistrer dans la base de données. Retourne ensuite un tableau récapitulatif de ces données. </p>
+
+<strong>Paramètres requis :</strong>
+<ul class="list-group"> 
+	
+	<li class="list-group-item">prenom : Le prénom de l'utilisateur</li>
+	<li class="list-group-item">nom : Le nom de l'utilisateur</li>
+	<li class="list-group-item">sexe : Le sexe de l'utilisateur</li>
+	<li class="list-group-item">login : Le login unique de l'utilisateur</li>
+	<li class="list-group-item">mailPrivate : L'email privé de l'utilisateur</li>
+	<li class="list-group-item">dateNaissance : La date de naissance de l'utilisateur ("YYYY-mm-dd")</li>
+	<li class="list-group-item">[tel] : Le numéro de téléphone de l'utilisateur</li>
+	<li class="list-group-item">[mailPub] : L'email publique de l'utilisateur</li>
+	<li class="list-group-item">[adresse][num] : Numéro de l'adresse de l'utilisateur</li>
+	<li class="list-group-item">[adresse][type] : Le type de l'adresse (BIS, RES,...) de l'utilisateur</li>
+	<li class="list-group-item">[adresse][rue] : La rue de l'utilisateur</li>
+	<li class="list-group-item">[adresse][CP] : Le code postale de l'utilisateur</li>
+	<li class="list-group-item">[adresse][ville] : Lville de l'utilisateur</li>
+
+</ul>
+
+<strong class="btn exemple-window">Exemple de résultat :</strong>
+									<pre class="exemple">
+EXEMPLE
+									</pre>
+			                <div class="page-article-footer">
+			                    <a class="btn" href="#top">Haut de la page <i class="icon-arrow-up"></i></a>
+			                </div>
+		               	</article>
+
+		               	<article class="page-article" id="Participants-List">
+		               		<header>
+			                	<h2 class="page-article-header">Récupérer tous les participants</h2>
+			                </header>
+			                	<p>
+				                	<code>GET - serveur/coolracing/service/api/participants</code>
+								</p>
+
+								<p>		
+Retourne un tableau contenant toutes les données relatives aux participants. (titre, description, etc.) </p>
+
+<strong>Paramètres requis :</strong>
+<ul class="list-group"> 
+	<li class="list-group-item">aucun</li>
+</ul>
+
+<strong class="btn exemple-window">Exemple de résultat :</strong>
+									<pre class="exemple">
+{
+    "0": {
+        "participant": {
+            "id": 6,
+            "prenom": "Gerard",
+            "nom": "Dupont",
+            "dateNaissance": "1980-03-23",
+            "dateInscription": "2015-03-19",
+            "sexe": "M",
+            "description": "",
+            "login": "Gerard",
+            "mailPub": "gerard@fai.com",
+            "tel": "0606060606",
+            "licence": "",
+            "descriptionLicence": "",
+            "adresse": {
+                "id": 14,
+                "num": "12",
+                "type": "Rue",
+                "rue": "grand rue",
+                "cp": "87000",
+                "ville": "Paris"
+            }
+        },
+        "links": {
+            "rel": "self",
+            "href": "http://coolracing/service/participants/6"
+        }
+    }
+}
+									</pre>
+			                <div class="page-article-footer">
+			                    <a class="btn" href="#top">Haut de la page <i class="icon-arrow-up"></i></a>
+			                </div>
+		               	</article>
+
+		               	<article class="page-article" id="Participants-ID">
+		               		<header>
+			                	<h2 class="page-article-header">Récupérer un participant par son ID</h2>
+			                </header>
+			                	<p>
+				                	<code>GET - serveur/coolracing/service/api/participants/:id</code>
+								</p>
+
+								<p>		
+Prends en paramètre l'id du participant sélectionné et retourne dans un tableau les diverses informations le concernant. </p>
+
+<strong>Paramètres requis :</strong>
+<ul class="list-group"> 
+	<li class="list-group-item">id : Id du participant concerné</li>
+</ul>
+
+<strong class="btn exemple-window">Exemple de résultat :</strong>
+									<pre class="exemple">
+{
+    "id": 6,
+    "prenom": "Gerard",
+    "nom": "Dupont",
+    "dateNaissance": "1980-03-23",
+    "dateInscription": "2015-03-19",
+    "sexe": "M",
+    "description": "",
+    "login": "Gerard",
+    "mailPub": "gerard@fai.com",
+    "tel": "0606060606",
+    "licence": "",
+    "descriptionLicence": "",
+    "adresse": {
+        "id": 14,
+        "num": "12",
+        "type": "Rue",
+        "rue": "grand rue",
+        "cp": "87000",
+        "ville": "Paris"
+    }
+}
+									</pre>
+			                <div class="page-article-footer">
+			                    <a class="btn" href="#top">Haut de la page <i class="icon-arrow-up"></i></a>
+			                </div>
+		               	</article>
+
+		               	<article class="page-article" id="Participants-Search">
+		               		<header>
+			                	<h2 class="page-article-header">Rechercher un participant</h2>
+			                </header>
+			                	<p>
+				                	<code>GET - serveur/coolracing/service/api/participants?nom=</code>
+								</p>
+
+								<p>		
+Permet, grâce à son nom, de rechercher un participant.  </p>
+
+<strong>Paramètres requis :</strong>
+<ul class="list-group"> 
+	<li class="list-group-item">nom : Chaine de caractères correspondant à l'utilisateur que vous voulez rechercher</li>
+</ul>
+
+<strong class="btn exemple-window">Exemple de résultat :</strong>
+									<pre class="exemple">
+EXEMPLE
+									</pre>
+
+			                <div class="page-article-footer">
+			                    <a class="btn" href="#top">Haut de la page <i class="icon-arrow-up"></i></a>
+			                </div>
+		               	</article>
+
+		               	<article class="page-article" id="Participants-Hist">
+		               		<header>
+			                	<h2 class="page-article-header">Récupérer l'historique des évènements d'un participant</h2>
+			                </header>
+			                	<p>
+				                	<code>GET - serveur/coolracing/service/api/participants/:id/evenements</code>
+								</p>
+
+								<p>		
+Récupère l'id du participant pour rechercher une ou plusieurs correspondances dans la liste de participations aux évènements. Retourne dans un tableau les liens vers les évènements auxquels est inscrit le participant. </p>
+
+<strong>Paramètres requis :</strong>
+<ul class="list-group"> 
+	<li class="list-group-item">id : Id du participant souhaité</li>
+</ul>
+
+<strong class="btn exemple-window">Exemple de résultat :</strong>
+									<pre class="exemple">
+[
+    {
+        "evenement": {
+            "id": 18,
+            "titre": "Color Run",
+            "dateCreation": "2015-03-19",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultricies iaculis nibh lobortis vestibulum. Maecenas et porttitor purus. Maecenas vestibulum lorem ac volutpat feugiat. Sed quis magna scelerisque, sodales purus nec, lacinia ante. Duis sap",
+            "lieu": "Nancy",
+            "dateCloture": "2015-05-03",
+            "dateOuverture": "2015-01-05",
+            "dateEvenement": "2015-06-04",
+            "sessions": "",
+            "nombrePlace": 2400,
+            "prix": 10,
+            "distance": "100",
+            "idOrganisateur": 31,
+            "idStatut": 1,
+            "idCategorie": 2,
+            "classement": []
+        },
+        "classement": "",
+        "href": "http://coolracing/service/api/evenements/18"
+    },
+    {
+        "evenement": {
+            "id": 20,
+            "titre": "VTT de descente",
+            "dateCreation": "2015-03-19",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vitae eros molestie, iaculis quam non, laoreet ligula. Donec ornare semper nibh, eget dignissim eros facilisis quis. Vivamus finibus, nibh non porta hendrerit, dolor turpis vulputate ma",
+            "lieu": "La Bresse",
+            "dateCloture": "2014-10-01",
+            "dateOuverture": "2014-08-02",
+            "dateEvenement": "2015-02-05",
+            "sessions": "",
+            "nombrePlace": 139,
+            "prix": 13,
+            "distance": "121",
+            "idOrganisateur": 32,
+            "idStatut": 1,
+            "idCategorie": 1,
+        },
+        "classement": {
+            "idParticipants": 6,
+            "position": 6,
+            "tempsTotal": "13:54:56",
+            "tempsIntermediaire": "",
+            "statut": "fini"
+        },
+        "href": "http://coolracing/service/api/evenements/20"
+    }
+]
+									</pre>
+
+			                <div class="page-article-footer">
+			                    <a class="btn" href="#top">Haut de la page <i class="icon-arrow-up"></i></a>
+			                </div>
+		               	</article>
+
+		               	<article class="page-article" id="Participants-Mod">
+		               		<header>
+			                	<h2 class="page-article-header">Modifier un participant</h2>
+			                </header>
+			                	<p>
+				                	<code>PUT - serveur/coolracing/service/api/participants/:id</code>
+								</p>
+
+								<p>	
+Récupère les données entrées puis prends en paramètre l'id du participant sélectionné afin de modifier les données correspondantes et de les enregistrer dans la base de données. Retourne ensuite un tableau récapitulatif de ces données. </p>
+
+<strong>Paramètres requis :</strong>
+<ul class="list-group"> 
+	<li class="list-group-item">id : Id du participant souhaité</li>
+</ul>
+
+<strong class="btn exemple-window">Exemple de résultat :</strong>
+									<pre class="exemple">
+EXEMPLE
+									</pre>
+
+			                <div class="page-article-footer">
+			                    <a class="btn" href="#top">Haut de la page <i class="icon-arrow-up"></i></a>
+			                </div>
+		               	</article>
+
+		               	<article class="page-article" id="Participants-Del">
+		               		<header>
+			                	<h2 class="page-article-header">Supprimer un participant</h2>
+			                </header>
+			                	<p>
+				                	<code>DELETE - serveur/coolracing/service/api/participants/:id</code>
+								</p>
+
+								<p>		
+Récupère l'id du participant afin de le supprimer de la base de données. Retourne un tableau confirmant la supression. </p>
+
+<strong>Paramètres requis :</strong>
+<ul class="list-group"> 
+	<li class="list-group-item">id : Id du participant souhaité</li>
+</ul>
+
+<strong class="btn exemple-window">Exemple de résultat :</strong>
+									<pre class="exemple">
+EXEMPLE
+									</pre>
+			                <div class="page-article-footer">
+			                    <a class="btn" href="#top">Haut de la page <i class="icon-arrow-up"></i></a>
+			                </div>
+		               	</article>
+		                
+		        </section>
+
+		        <section class="page-section" id="Organisateurs">
+		                <h1 class="page-header">Organisateurs</h1>
+
+		                <article class="page-article" id="Organisateurs-Add">
+		                	<header>
+			                	<h2 class="page-article-header">Inscription : Ajouter un organisateur</h2>
+			                </header>
+			                	<p>
+				                	<code>POST - serveur/coolracing/service/api/organisateurs</code>
+								</p>
+
+								<p>		
+Récupère les données entrées ainsi que la date d'inscription puis les attribue à un nouvel objet "organisateur" avant de l'enregistrer dans la base de données. Un objet "adresse" est également créé. Retourne ensuite un tableau récapitulatif de ces données. </p>
+
+<strong>Paramètres requis :</strong>
+<ul class="list-group"> 
+	<li class="list-group-item">nom_structure : Le nom de l'organisation</li>
+	<li class="list-group-item">forme_juridique : Forme juridique de l'organisation</li>
+	<li class="list-group-item">mailPrivate : Le mail privé de l'organisation</li>
+	<li class="list-group-item">login : Le login unique de l'organisation</li>
+	<li class="list-group-item">password :Le mot de passe du compte</li>
+	<li class="list-group-item">nomResponsable : Le nom du reponsable de l'organisation</li>
+	<li class="list-group-item">prenomResponsable : Le prénom du reponsable de l'organisation</li>
+	<li class="list-group-item">mailResponsable :  Le mail du reponsable de l'organisation</li>
+	<li class="list-group-item">[tel] : Le numero de téléphone de l'organisation</li>
+	<li class="list-group-item">[mailPub] : Le mail publique de l'organisation</li>
+	<li class="list-group-item">[adresse][num] : Numéro de l'adresse de l'organisation</li>
+	<li class="list-group-item">[adresse][type] : Le type de l'adresse (BIS, RES,...) de l'organisation</li>
+	<li class="list-group-item">[adresse][rue] : La rue de l'organisation</li>
+	<li class="list-group-item">[adresse][CP] : Le code postale de l'organisation</li>
+	<li class="list-group-item">[adresse][ville] : La ville de l'organisation</li>
+</ul>
+
+<strong class="btn exemple-window">Exemple de résultat :</strong>
+									<pre class="exemple">
+EXEMPLE
+									</pre>
+
+			                <div class="page-article-footer">
+			                    <a class="btn" href="#top">Haut de la page <i class="icon-arrow-up"></i></a>
+			                </div>
+		               	</article>
+
+		               	<article class="page-article" id="Organisateurs-List">
+		               		<header>
+			                	<h2 class="page-article-header">Récupérer tous les organisateurs</h2>
+			                </header>
+			                	<p>
+				                	<code>GET - serveur/coolracing/service/api/organisateurs</code>
+								</p>
+
+								<p>		
+Retourne un tableau contenant toutes les données relatives aux organisateurs. </p>
+
+<strong>Paramètres requis :</strong>
+<ul class="list-group"> 
+	<li class="list-group-item">Aucun</li>
+</ul>
+
+<strong class="btn exemple-window">Exemple de résultat :</strong>
+									<pre class="exemple">
+{
+    "0": {
+        "organisateur": {
+            "id": 31,
+            "nom_structure": "CoursPoney",
+            "forme_juridique": "Association",
+            "nomResponsable": "Dupont",
+            "prenomResponsable": "Derrick",
+            "dateInscription": "2015-03-19",
+            "login": "CoursPoney",
+            "mailPub": "poney@poney.fr",
+            "tel": "0606060606",
+            "mailResponsable": "poney@poney.fr",
+            "adresse": {
+                "id": 15,
+                "num": "13",
+                "type": "Boulevard",
+                "rue": "grand rue",
+                "cp": "65000",
+                "ville": "Toulouse"
+            }
+        },
+        "links": [
+            {
+                "rel": "self",
+                "href": "http://coolracing/service/api/organisateurs/31"
+            },
+            {
+                "rel": "evenements",
+                "href": "http://coolracing/service/api/organisateurs/31/evenements"
+            }
+        ]
+    }
+}
+									</pre>
+
+			                <div class="page-article-footer">
+			                    <a class="btn" href="#top">Haut de la page <i class="icon-arrow-up"></i></a>
+			                </div>
+		               	</article>
+
+		               	<article class="page-article" id="Organisateurs-ID">
+		               		<header>
+			                	<h2 class="page-article-header">Récupérer un organisateur par son ID</h2>
+			                </header>
+			                	<p>
+				                	<code>GET - serveur/coolracing/service/api/organisateurs/:id</code>
+								</p>
+
+								<p>		
+Prends en paramètre l'id de l'organisateur sélectionné et retourne dans un tableau les diverses informations le concernant. </p>
+
+<strong>Paramètres requis :</strong>
+<ul class="list-group"> 
+	<li class="list-group-item">id : Id de l'organisation</li>
+</ul>
+
+<strong class="btn exemple-window">Exemple de résultat :</strong>
+									<pre class="exemple">
+{
+    "organisateur": {
+        "id": 31,
+        "nom_structure": "CoursPoney",
+        "forme_juridique": "Association",
+        "nomResponsable": "Dupont",
+        "prenomResponsable": "Derrick",
+        "dateInscription": "2015-03-19",
+        "login": "CoursPoney",
+        "mailPub": "poney@poney.fr",
+        "tel": "0606060606",
+        "mailResponsable": "poney@poney.fr",
+        "adresse": {
+            "id": 15,
+            "num": "13",
+            "type": "Boulevard",
+            "rue": "grand rue",
+            "cp": "65000",
+            "ville": "Toulouse"
+        }
+    },
+    "links": {
+        "rel": "evenements",
+        "href": "http://coolracing/service/api/organisateurs/31/evenements"
+    }
+}
+									</pre>
+
+			                <div class="page-article-footer">
+			                    <a class="btn" href="#top">Haut de la page <i class="icon-arrow-up"></i></a>
+			                </div>
+		               	</article>
+
+		               	<article class="page-article" id="Organisateurs-Search">
+		               		<header>
+			                	<h2 class="page-article-header">Rechercher un organisateur</h2>
+			                </header>
+			                	<p>
+				                	<code>GET - serveur/coolracing/service/api/organisateurs?nom=</code>
+								</p>
+
+								<p>		
+Permet, grâce à son nom, de rechercher un organisateur. Applique un filtre à la fonction permettant de lister tout les organisateurs.
+ </p>
+
+<strong>Paramètres requis :</strong>
+<ul class="list-group"> 
+	<li class="list-group-item">nom : Le nom d'une organisation</li>
+</ul>
+
+<strong class="btn exemple-window">Exemple de résultat :</strong>
+									<pre class="exemple">
+EXEMPLE
+									</pre>
+
+			                <div class="page-article-footer">
+			                    <a class="btn" href="#top">Haut de la page <i class="icon-arrow-up"></i></a>
+			                </div>
+		               	</article>
+
+		               	<article class="page-article" id="Organisateurs-Hist">
+		               		<header>
+			                	<h2 class="page-article-header">Récupérer l'historique des évènements d'un organisateur</h2>
+			                </header>
+			                	<p>
+				                	<code>GET - serveur/coolracing/service/api/organisateurs/:id/evenements</code>
+								</p>
+
+								<p>		
+Récupère l'id de l'organisateur et récupère toutes les informations liées aux évènements correspondant à cet id. Retourne dans un tableau les liens vers les évènements rattachés à l'id. </p>
+
+<strong>Paramètres requis :</strong>
+<ul class="list-group"> 
+	<li class="list-group-item">id : Id de l'organisateur</li>
+</ul>
+
+<strong class="btn exemple-window">Exemple de résultat :</strong>
+									<pre class="exemple">
+{
+    "evenements": [
+        {
+            "evenement": {
+                "id": 17,
+                "titre": "Course du quinté +",
+                "dateCreation": "2015-03-19",
+                "description": "Course du quinté + à poney et en VTT\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultricies iaculis nibh lobortis vestibulum. Maecenas et porttitor purus. Maecenas vestibulum lorem ac volutpat feugiat. Sed quis magna scelerisque, sod",
+                "lieu": "Vittel",
+                "dateCloture": "2015-11-05",
+                "dateOuverture": "2015-06-01",
+                "dateEvenement": "2016-07-08",
+                "sessions": "",
+                "nombrePlace": 347,
+                "prix": 30,
+                "distance": "42",
+                "statut": "venir"
+            },
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "http://coolracing/service/api/evenements/17"
+                },
+                {
+                    "rel": "organisateurs",
+                    "href": "http://coolracing/service/api/organisateurs/31"
+                }
+            ]
+        },
+    ],
+									</pre>
+
+			                <div class="page-article-footer">
+			                    <a class="btn" href="#top">Haut de la page <i class="icon-arrow-up"></i></a>
+			                </div>
+		               	</article>
+
+		               	<article class="page-article" id="Organisateurs-Mod">
+		               		<header>
+			                	<h2 class="page-article-header">Modifier un organisateur</h2>
+			                </header>
+			                	<p>
+				                	<code>PUT - serveur/coolracing/service/api/organisateurs/:id</code>
+								</p>
+
+								<p>		
+Récupère les données entrées puis prends en paramètre l'id de l'organisateur sélectionné afin de modifier les données correspondantes et de les enregistrer dans la base de données. Retourne ensuite un tableau récapitulatif de ces données. </p>
+
+<strong>Paramètres requis :</strong>
+<ul class="list-group"> 
+	<li class="list-group-item">nom_structure : Le nom de l'organisation</li>
+	<li class="list-group-item">forme_juridique : Forme juridique de l'organisation</li>
+	<li class="list-group-item">mailPrivate : Le mail privé de l'organisation</li>
+	<li class="list-group-item">login : Le login unique de l'organisation</li>
+	<li class="list-group-item">password :Le mot de passe du compte</li>
+	<li class="list-group-item">nomResponsable : Le nom du reponsable de l'organisation</li>
+	<li class="list-group-item">prenomResponsable : Le prénom du reponsable de l'organisation</li>
+	<li class="list-group-item">mailResponsable :  Le mail du reponsable de l'organisation</li>
+	<li class="list-group-item">[tel] : Le numero de téléphone de l'organisation</li>
+	<li class="list-group-item">[mailPub] : Le mail publique de l'organisation</li>
+	<li class="list-group-item">[adresse][num] : Numéro de l'adresse de l'organisation</li>
+	<li class="list-group-item">[adresse][type] : Le type de l'adresse (BIS, RES,...) de l'organisation</li>
+	<li class="list-group-item">[adresse][rue] : La rue de l'organisation</li>
+	<li class="list-group-item">[adresse][CP] : Le code postale de l'organisation</li>
+	<li class="list-group-item">[adresse][ville] : La ville de l'organisation</li>
+</ul>
+
+<strong class="btn exemple-window">Exemple de résultat :</strong>
+									<pre class="exemple">
+EXEMPLE
+									</pre>
+
+			                <div class="page-article-footer">
+			                    <a class="btn" href="#top">Haut de la page <i class="icon-arrow-up"></i></a>
+			                </div>
+		               	</article>
+
+		               	<article class="page-article" id="Organisateurs-Del">
+		               		<header>
+			                	<h2 class="page-article-header">Supprimer un organisateur</h2>
+			                </header>
+			                	<p>
+				                	<code>DELETE - serveur/coolracing/service/api/organisateurs/:id</code>
+								</p>
+
+								<p>		
+Récupère l'id de l'organisateur afin de le supprimer de la base de données. Retourne un tableau confirmant la supression. </p>
+
+<strong>Paramètres requis :</strong>
+<ul class="list-group"> 
+	<li class="list-group-item">id : Id de l'organisation à supprimer</li>
+</ul>
+
+<strong class="btn exemple-window">Exemple de résultat :</strong>
+									<pre class="exemple">
+EXEMPLE
+									</pre>
+			                <div class="page-article-footer">
+			                    <a class="btn" href="#top">Haut de la page <i class="icon-arrow-up"></i></a>
+			                </div>
+		               	</article>
+		                
+		        </section>
+
+		        <section class="page-section" id="Categories">
+		                <h1 class="page-header">Catégories</h1>
+
+		                <article class="page-article" id="Categories-Add">
+		                	<header>
+			                	<h2 class="page-article-header">Ajouter une nouvelle catégorie</h2>
+			                </header>
+			                	<p>
+				                	<code>POST - serveur/coolracing/service/api/categories</code>
+								</p>
+
+								<p>		
+Récupère le nom de la catégorie entré puis l'attribue à un nouvel objet "catégorie" avant de l'enregistrer dans la base de données. </p>
+
+<strong>Paramètres requis :</strong>
+<ul class="list-group"> 
+	<li class="list-group-item">nom : Nom de la catégorie</li>
+</ul>
+
+<strong class="btn exemple-window">Exemple de résultat :</strong>
+									<pre class="exemple">
+EXEMPLE
+									</pre>
+
+			                <div class="page-article-footer">
+			                    <a class="btn" href="#top">Haut de la page <i class="icon-arrow-up"></i></a>
+			                </div>
+		               	</article>
+
+		               	<article class="page-article" id="Categories-List">
+		               		<header>
+			                	<h2 class="page-article-header">Lister les catégories</h2>
+			                </header>
+			                	<p>
+				                	<code>GET - serveur/coolracing/service/api/categories</code>
+								</p>
+
+								<p>		
+Retourne un tableau contenant toutes les données relatives aux catégories. </p>
+
+<strong>Paramètres requis :</strong>
+<ul class="list-group"> 
+	<li class="list-group-item">Aucun</li>
+</ul>
+
+<strong class="btn exemple-window">Exemple de résultat :</strong>
+									<pre class="exemple">
+EXEMPLE
+									</pre>
+
+			                <div class="page-article-footer">
+			                    <a class="btn" href="#top">Haut de la page <i class="icon-arrow-up"></i></a>
+			                </div>
+		               	</article>
+
+		               	<article class="page-article" id="Categories-ID">
+		               		<header>
+			                	<h2 class="page-article-header">Récupérer une catégorie par son ID</h2>
+			                </header>
+			                	<p>
+				                	<code>GET - serveur/coolracing/service/api/categories/:id</code>
+								</p>
+
+								<p>		
+Prends en paramètre l'id de la catégorie sélectionnée et retourne dans un tableau les diverses informations la concernant.</p>
+
+<strong>Paramètres requis :</strong>
+<ul class="list-group"> 
+	<li class="list-group-item">id : Id de la catégorie</li>
+</ul>
+
+<strong class="btn exemple-window">Exemple de résultat :</strong>
+									<pre class="exemple">
+EXEMPLE
+									</pre>
+
+			                <div class="page-article-footer">
+			                    <a class="btn" href="#top">Haut de la page <i class="icon-arrow-up"></i></a>
+			                </div>
+		               	</article>
+
+		               	<article class="page-article" id="Categories-List-Events">
+		               		<header>
+			                	<h2 class="page-article-header">Récupérer tous les évènements d'une catégorie</h2>
+			                </header>
+			                	<p>
+				                	<code>GET - serveur/coolracing/service/api/categories/:id/evenements</code>
+								</p>
+
+								<p>		
+Récupère l'id de la catégorie sélectionnée puis récupère et retourne dans un tableau les divers évènements appartenant à cette dernière ainsi que les informations les concernant. </p>
+
+<strong>Paramètres requis :</strong>
+<ul class="list-group"> 
+	<li class="list-group-item">id :Id de l'évènement</li>
+</ul>
+
+<strong class="btn exemple-window">Exemple de résultat :</strong>
+									<pre class="exemple">
+{
+    "evenements": [
+        {
+            "evenement": {
+                "id": 20,
+                "titre": "VTT de descente",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vitae eros molestie, iaculis quam non, laoreet ligula. Donec ornare semper nibh, eget dignissim eros facilisis quis. Vivamus finibus, nibh non porta hendrerit, dolor turpis vulputate ma",
+                "lieu": "La Bresse",
+                "prix": 13,
+                "idOrganisateur": 32,
+                "idCategorie": 1,
+                "idStatut": 1,
+                "dateEvenement": "2015-02-05",
+                "dateOuverture": "2014-08-02",
+                "dateCloture": "2014-10-01"
+            },
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "http://coolracing/service/api/evenements/20"
+                },
+                {
+                    "rel": "organisateur",
+                    "href": "http://coolracing/service/api/organisateurs/32"
+                }
+            ]
+        },
+        {
+            "evenement": {
+                "id": 19,
+                "titre": "VTT Run",
+                "description": "VTT RUN IN LYON",
+                "lieu": "Lyon",
+                "prix": 249,
+                "idOrganisateur": 32,
+                "idCategorie": 1,
+                "idStatut": 1,
+                "dateEvenement": "2017-11-01",
+                "dateOuverture": "2015-01-01",
+                "dateCloture": "2015-08-01"
+            },
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "http://coolracing/service/api/evenements/19"
+                },
+                {
+                    "rel": "organisateur",
+                    "href": "http://coolracing/service/api/organisateurs/32"
+                }
+            ]
+        }
+    ]
+}
+									</pre>
+
+			                <div class="page-article-footer">
+			                    <a class="btn" href="#top">Haut de la page <i class="icon-arrow-up"></i></a>
+			                </div>
+		               	</article>
+
+		               	<article class="page-article" id="Categories-Mod">
+		               		<header>
+			                	<h2 class="page-article-header">Modifier une catégorie</h2>
+			                </header>
+			                	<p>
+				                	<code>PUT - serveur/coolracing/service/api/categories/:id</code>
+								</p>
+
+								<p>		
+Récupère le nom entré puis prends en paramètre l'id de la catégorie sélectionnée afin de modifier les données correspondantes et de les enregistrer dans la base de données. </p>
+
+<strong>Paramètres requis :</strong>
+<ul class="list-group"> 
+	<li class="list-group-item">nom : Nom de la catégorie</li>
+</ul>
+
+<strong class="btn exemple-window">Exemple de résultat :</strong>
+									<pre class="exemple">
+EXEMPLE
+									</pre>
+
+			                <div class="page-article-footer">
+			                    <a class="btn" href="#top">Haut de la page <i class="icon-arrow-up"></i></a>
+			                </div>
+		               	</article>
+
+		               	<article class="page-article" id="Categories-Del">
+		               		<header>
+			                	<h2 class="page-article-header">Supprimer une catégorie</h2>
+			                </header>
+			                	<p>
+				                	<code>DELETE - serveur/coolracing/service/api/categories/:id</code>
+								</p>
+
+								<p>		
+Récupère l'id de la catégorie afin de le supprimer de la base de données. Retourne un tableau confirmant la supression. </p>
+
+<strong>Paramètres requis :</strong>
+<ul class="list-group"> 
+	<li class="list-group-item">id : Id de la catégorie</li>
+</ul>
+
+<strong class="btn exemple-window">Exemple de résultat :</strong>
+									<pre class="exemple">
+EXEMPLE
+									</pre>
+			                <div class="page-article-footer">
+			                    <a class="btn" href="#top">Haut de la page <i class="icon-arrow-up"></i></a>
+			                </div>
+		               	</article>
+		                
+		        </section>
+
+		        <section class="page-section" id="Adresses">
+		                <h1 class="page-header">Adresses</h1>
+
+		                <article class="page-article" id="Adresses-List">
+		                	<header>
+			                	<h2 class="page-article-header">Lister les adresses</h2>
+			                </header>
+			                	<p>
+				                	<code>GET - serveur/coolracing/service/api/adresses</code>
+								</p>
+
+								<p>		
+Retourne un tableau contenant toutes les adresses. </p>
+
+<strong>Paramètres requis :</strong>
+<ul class="list-group"> 
+	<li class="list-group-item">Aucun</li>
+</ul>
+
+<strong class="btn exemple-window">Exemple de résultat :</strong>
+									<pre class="exemple">
+{
+    "adresses": [
+        {
+            "id": 14,
+            "num": "12",
+            "type": "Rue",
+            "rue": "grand rue",
+            "cp": "87000",
+            "ville": "Paris"
+        },
+        {
+            "id": 15,
+            "num": "13",
+            "type": "Boulevard",
+            "rue": "grand rue",
+            "cp": "65000",
+            "ville": "Toulouse"
+        },
+        {
+            "id": 16,
+            "num": "1",
+            "type": "Rue",
+            "rue": "grand rue",
+            "cp": "56000",
+            "ville": "Lorient"
+        }
+    ]
+}
+									</pre>
+
+			                <div class="page-article-footer">
+			                    <a class="btn" href="#top">Haut de la page <i class="icon-arrow-up"></i></a>
+			                </div>
+		               	</article>
+
+		               	<article class="page-article" id="Adresses-Mod">
+		               		<header>
+			                	<h2 class="page-article-header">Mettre à jour une adresse</h2>
+			                </header>
+			                	<p>
+				                	<code>PUT - serveur/coolracing/service/api/adresses/:id</code>
+								</p>
+
+								<p>		
+Récupère les données entrées puis prends en paramètre l'id de l'adresse sélectionnée afin de modifier les données correspondantes et de les enregistrer dans la base de données. Retourne ensuite un tableau récapitulatif de ces données. <p>
+
+<strong>Paramètres requis :</strong>
+<ul class="list-group"> 
+	<li class="list-group-item">id : Id de l'adresse</li>
+</ul>
+
+<strong class="btn exemple-window">Exemple de résultat :</strong>
+									<pre class="exemple">
+EXEMPLE
+									</pre>
+
+			                <div class="page-article-footer">
+			                    <a class="btn" href="#top">Haut de la page <i class="icon-arrow-up"></i></a>
+			                </div>
+		               	</article>
+
+		               	<article class="page-article" id="Adresses-Del">
+		               		<header>
+			                	<h2 class="page-article-header">Supprimer une adresse</h2>
+			                </header>
+				                <p>
+				                	<code>DELETE - serveur/coolracing/service/api/adresses/:id</code>
+								</p>
+
+								<p>		
+Récupère l'id de l'adresse afin de le supprimer de la base de données. Retourne un tableau confirmant la supression. </p>
+
+<strong>Paramètres requis :</strong>
+<ul class="list-group"> 
+	<li class="list-group-item">id : Id de l'adresse</li>
+</ul>
+
+<strong class="btn exemple-window">Exemple de résultat :</strong>
+									<pre class="exemple">
+EXEMPLE
+									</pre>
+			                <div class="page-article-footer">
+			                    <a class="btn" href="#top">Haut de la page <i class="icon-arrow-up"></i></a>
+			                </div>
+		               	</article>          	
+		                
+		        </section>
+			</div>
+
+	    </div>
+	</div>
+{% endblock %}

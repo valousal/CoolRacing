@@ -1,0 +1,134 @@
+{% extends "main.html.twig" %}
+{% block main_content %}
+
+	<!-- Page Content -->
+	<section id='main'>
+
+		{% if message %}
+		<section class="error">
+			<img src="{{rootUri}}/src/media/assets/datas/icones/error.png">
+			<div class='msg'>
+				<h1>Erreur</h1>
+				<p>{{message}}</p>
+			</div>
+		</section>
+		{% endif %}
+
+		<!-- Participant Inscription Titre-->
+		<section id='inscriptionTitle'>
+			
+			<!-- Title page -->
+			<div class='block-head'>
+				<img src='{{rootUri}}/src/media/assets/datas/icones/search-round.png' alt='Search'>
+				<h1>Inscription organisateur</h1>
+			</div>
+
+			<!-- Describ page -->
+			<div class='block-describ'>
+				<p> Remplisser le formulaire suivant pour vous inscrire sur le site et pouvoir organiser des événements.</p>
+			</div>
+		</section>
+	
+		<!-- Form inscription -->
+		<form id='inscriptionForm' action='{{action}}' method='POST'>
+
+			<!-- Info structure -->
+			<section class='col left'>
+				<!-- Title page -->
+				<div class='block-head'>
+					<h1> Informations de la structure</h1>
+				</div>
+
+				<div>
+					<label for='nom_structure'>Nom structure</label>
+					<input id='name-org' type='text' name='nom_structure'  onblur='verifAllOrganisateur()'>
+				</div>
+
+				<div>
+					<label for='forme_juridique'>Forme Juridique</label>
+					<input id='type-org' type='text' name='forme_juridique'  onblur='verifAllOrganisateur()'>
+				</div>
+
+				<div>
+					<label for='mailPub'>Mail public</label>
+					<input id='mail-org' type='mail' name='mailPub'  onblur='verifAllOrganisateur()'>
+				</div>
+
+				<div>
+					<label for='tel'>Telephone</label>
+					<input id='tel' type='tel' name='tel'  onblur='verifAllOrganisateur()'>
+				</div>
+
+				<div id="adress">
+					<label for='type'>Adresse</label>
+					<input id='num' type='num' name='num' placeholder='N°'  onblur='verifAllOrganisateur()'>
+					<select name='type'>
+						<option>Rue</option>
+						<option>Boulevard</option>
+						<option>Impasse</option>
+					</select>
+					<input id='rue' type='text' name='rue' placeholder='Adresse'  onblur='verifAllOrganisateur()'>
+					<input id='postal' type='num' name='CP'  placeholder='Code postal'  onblur='verifAllOrganisateur()'>
+					<input id='ville' type='text' name='ville'  placeholder='Ville'  onblur='verifAllOrganisateur()'>
+				</div>
+
+			</section>
+
+			<!-- Info responsable -->
+			<section class='col right'>
+
+				<!-- Title page -->
+				<div class='block-head'>
+					<h1> Informations du contact</h1>
+				</div>
+
+				<div>
+					<label for='nomResponsable'>Nom du contact</label>
+					<input id='name' type='text' name='nomResponsable'  onblur='verifAllOrganisateur()'>
+				</div>
+
+				<div>
+					<label for='prenomResponsable'>Prénom du contact</label>
+					<input id='firstname' type='text' name='prenomResponsable'  onblur='verifAllOrganisateur()'>
+				</div>
+
+				<div>
+					<label for='login'>Login</label>
+					<input id='login' type='text' name='login'  onblur='verifAllOrganisateur()'>
+				</div>
+
+				<div>
+					<label for='password'>Mot de passe</label>
+					<input id='mdp' type='password' name='password'  onblur='verifAllOrganisateur()'>
+				</div>
+
+				<div>
+					<label for='password'>Confirmation mot de passe </label>
+					<input id='mdp-valid' type='password' name='password-confirm'  onblur='verifAllOrganisateur()'>
+				</div>
+
+				<div>
+					<label for='mailPrivate'>Mail privée</label>
+					<input id='mail-private' type='mail' name='mailPrivate'  onblur='verifAllOrganisateur()'>
+				</div>
+
+				<div>
+					<label for='mailResponsable'>Mail du contact</label>
+					<input id='mail-contact' type='mail' name='mailResponsable'  onblur='verifAllOrganisateur()'>
+				</div>
+			</section>
+
+			<!-- Bouton form -->
+			<section id='form-btn'>
+
+				<section class='form-btn-input'>
+					<input type='submit' id='submit' value="S'inscrire" disabled='true'>
+				</section>
+
+				<section class='form-btn-input'>
+					<input type='reset' value='Reset'>
+				</section>
+			</section>
+		</form>
+	</section>
+{% endblock %}

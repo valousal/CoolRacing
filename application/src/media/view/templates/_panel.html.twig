@@ -1,0 +1,37 @@
+ <!-- Panel profil -->
+ <section id='panel' class='panel'>
+
+	<!-- Photo -->
+	<section id='photo'>
+		{% if type == 'true' %} {# Organisateurs #}
+			<img src='{{rootUri}}/src/media/assets/datas/icones/group_unknown.png' alt='Photo de profil'>
+		{% endif %}
+
+		{% if type == 'false' %} {# Participants #}
+			<img src='{{rootUri}}/src/media/assets/datas/icones/profil_unknown.png' alt='Photo de profil'>
+		{% endif %}
+	</section>
+
+	<!-- Profil Options -->
+	<section id='options'>
+		<ul>
+
+			{% if type == 'true' %} {# Organisateurs #}
+				<li><a href='{{rootUri}}/organisateurs/profil'><img src='{{rootUri}}/src/media/assets/datas/icones/profil.png' alt=''><label> Gestion du compte </label></a></li>
+				<li><a href='{{rootUri}}/evenements/create/event'><img src='{{rootUri}}/src/media/assets/datas/icones/event.png' alt=''><label> Créer un événement </label></a></li>
+				<li><a href='{{rootUri}}/organisateurs/profil/evenements'><img src='{{rootUri}}/src/media/assets/datas/icones/trophy.png' alt=''><label>  Historique des évenements </label></a></li>
+				<li><a href='{{deconnection}}'><img src='{{rootUri}}/src/media/assets/datas/icones/delete.png' alt=''><label> Déconnexion </label></a></li>
+			{% endif %}
+
+			{% if type == 'false' %} {# Participants #}
+				<li><a href='{{rootUri}}/participants/profil'><img src='{{rootUri}}/src/media/assets/datas/icones/profil.png' alt=''><label> Mon compte </label></a></li>
+				<li><a href='{{rootUri}}/participants/profil/evenements'><img src='{{rootUri}}/src/media/assets/datas/icones/trophy.png' alt=''><label> Mes épreuves </label></a></li>
+				{# <li><a href='{{rootUri}}'><img src='{{rootUri}}/src/media/assets/datas/icones/trophy.png' alt=''><label> Mes classements </label></a></li> #}
+				<li><a href='{{rootUri}}/participants/update'><img src='{{rootUri}}/src/media/assets/datas/icones/setting.png' alt=''><label> Modifications </label></a></li>
+				<li><a href='{{deconnection}}'><img src='{{rootUri}}/src/media/assets/datas/icones/delete.png' alt=''><label> Déconnexion </label></a></li>
+			{% endif %}
+
+		</ul>
+	</section>
+</section> 
+

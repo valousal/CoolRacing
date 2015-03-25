@@ -1,0 +1,43 @@
+{% extends "main.html.twig" %}
+{% block main_content %}
+	<div class="container-fluid" id="index">
+		
+		{# JUMBOTRON #}
+		<div class="jumbotron">
+			<div class="container" id="jumbotron">
+				<h1>CoolRacing</h1>
+				<p>...</p>
+				<p><a class="btn btn-primary btn-lg" href="{{rootUri}}/doc/doc" role="button">Documentation</a></p>
+			</div>
+		</div>
+
+
+		{# BODY #}
+		<div class="row">
+			<div class="col-lg-8 col-md-8 col-xs-12">
+				<h1>Le leader d'évènments sportifs</h1>
+				<p>
+					Bénéficiez de l’ouverture de nos données pour créer des services innovants.
+					Nous croyons à l’innovation partagée et au potentiel de créativité des communautés pour rendre les villes toujours plus riches et accessibles.
+					Avec JCDecaux developer, créez des applications et de nouveaux services grâce à une distribution des données facile d’accès et sous « Licence Ouverte ».
+				</p>
+			</div>
+			<div class="col-lg-4 col-md-4 col-xs-12">
+				<img src="../src/media/assets/datas/img/trophy45.png" id='picture' class="img-responsive" alt="Responsive image">
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-lg-4 col-md-8 col-xs-12">
+				<img src="../src/media/assets/datas/img/project.png"  id='picture' class="img-responsive" alt="Responsive image">
+			</div>
+			<div class="col-lg-8 col-md-4 col-xs-12">
+				<h1>Gérer gratuitement et facilement vos évènements sportifs</h1>
+				<p>
+					De la position des stations à la disponibilité des vélos et places de stationnement en temps réel, réutilisez ces données pour expérimenter de nouvelles représentations ou pour fournir des services innovants et utiles aux usagers. Vous pouvez accéder à ces données au travers du simple téléchargement de fichiers ou d’une API web avancée.
+				</p>
+			</div>
+		</div>
+		<hr>
+	</div>
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends "main.html.twig" %}
+{% block main_content %}
+
+
+<!-- Page Content -->
+<section id='main'>
+
+	<section id="faq">
+		
+		<article id='general'>
+			<h1>Présentation du site</h1>
+			<p>
+				Vous êtes un sportif, vous recherchez des épreuves, vous souhaitez participer à un évènement...
+				CoolRacing est un service web conçu pour faciliter la gestion d'évènements sportifs destiné à être utilisé par les organisateurs et les participants.
+			</p>
+			<p>
+				La principale fonctionnalité réside dans la possibilité de pouvoir administrer son propre évènement sur CoolRacing depuis sa création jusqu'à son terme. Il mets à disposition différents outils permettant 
+				de gérer la création d'évènements, les inscriptions ainsi que les modalités de l'épreuve. Il facilite également la saisie et la diffusion des classements et autres données relatives à l'épreuve.
+			</p>
+			<p>
+				CoolRacing propose des espaces dédiés aux participants et aux organisateurs afin de fournir une expérience adaptée à vos besoins.
+				L'inscription est gratuite et vous permet de choisir si vous souhaitez participer ou organiser un évènement. Vous pourrez ensuite directement accéder à votre espace personnel, vous fournissant tous les outils nécessaires au bon déroulement de votre parcours sportif.
+			</p>
+		</article>
+
+		<article id='index'>
+			<h2> Sommaire</h2>
+			<ul>
+				<li class='head'><a href='#participant'>Du côté participant</a></li>
+				<li><a href='#p1'>Pourquoi s'inscrire ?</a></li>
+				<li><a href='#p2'>Comment s'inscrire ?</a></li>
+				<li><a href='#p3'>Comment participer à un événement?</a></li>
+				<li class='head'><a href='#organisateur'>Du côté organisateur</a></li>
+				<li><a href='#o1'> Pourquoi s'inscrire ?</a></li>
+				<li class='head'><a href='#developpeur'>Du côté developpeur</a></li>
+			</ul>
+		</article>
+
+		<article id='participant'>
+			<h2> Du côté participant</h2>
+
+			<h3 id='p1'> Pourquoi s'inscrire ?</h3>
+			
+
+			<h3 id='p2'> Comment s'inscrire ?</h3>
+			<p>
+				Pour vous inscrire, rendez-vous sur <a href='{{rootUri}}/inscription'> cette page</a>, choississez une inscription en tant que participant. Remplissez l'ensemble des champs demandés, seuls le login et l'adresse mail public pourront être communiqués sur le site. Le reste des données seront utilisées lors de l'incription à un événement et ne pourront être utilisées à des fins commerciales.
+			</p>
+
+			<h3 id='p3'> Comment participer à un événement?</h3>
+			<p>
+				Pour participer à un événement, connectez vous en tant que participant, allez sur la page d'un événement, si l'inscription est possible, un bouton inscription apparrait.
+				Cliquez dessus et remplissez les informations demandées. Certaines données seront directement transmises en fonction de votre compte (nom, prénom...).
+			</p>
+
+		</article>
+
+		<article id='organisateur'>
+			<h2> Du côté organisateur</h2>
+
+			<h3 id='o1'> Pourquoi s'inscrire ?</h3>
+			<p>
+				Vous gérer un club, une équipe, vous souhaitez organiser un évènement...
+				Rendez-vous dans la rubrique "Inscription" et inscrivez vous en tant qu'organisateur !
+				Il vous sera demandé de remplir un formulaire afin de renseigner...
+				Une fois votre inscription complétée, vous pourrez alors accéder à votre espace "organisateur", vous permettant de créer et de gérer vos futurs évènements.
+			</p>
+
+
+		</article>
+
+		<article id='developpeur'>
+			<h2> Du côté developeur</h2>
+
+			<p>
+				Vous êtes développeur et vous souhaitez récupérer des données relatives à notre service ? Rien de plus simple...
+
+				Rendez-vous sur la page ### et complétez le formulaire d'inscription dédié aux développeurs. Vous obtiendrez alors des identifiants vous autorisant à récupérer diverses données publiques, comme, par exemple, les classements, les fiches relatives aux épreuves...
+			</p>
+
+		</article>
+		
+	</section>
+	
+</section>
+
+{% endblock %}
