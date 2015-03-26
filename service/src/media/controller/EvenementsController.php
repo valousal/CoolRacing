@@ -405,7 +405,7 @@ class EvenementsController extends AbstractController{
 			}
 
 
-			$all['evenement'] = array('dateEvenement' => $event->dateEvenement);
+			$all['evenement'] = array('dateEvenement' => $event->dateEvenement, 'nomEvent' => $event->titre, 'distance' => $event->distance);
 
 			$app->response->setStatus(200) ;
 			$app->response->headers->set('Content-type','application/json') ;

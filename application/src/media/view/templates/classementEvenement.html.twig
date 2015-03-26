@@ -3,17 +3,26 @@
 	
 	<!-- Page Content -->
 	<section id='main'>
-		{# RECUPERE LE CLASSEMENT DE LEVENEMENT A METTRE EN FORME AUSSI #}
-		{% for participant in classement %}
-			<a href='{{rootUri}}/participants/{{participant.id}}'>{{participant.nom}}</a>
-			{{participant.prenom}}
-			{{participant.sexe}}
-			{{participant.dateNaissance}}
-			{{participant.position}}
-			{{participant.tempsTotal}}
-			{{participant.statut}}
-		{% endfor %}
 
+		<table id='classement'>
+			<tr>
+				<th>N°</th>
+				<th> Nom</th>
+				<th> Prénom</th>
+				<th> Temps</th>
+				<th> Sexe </th>
+			</tr>
+			{# RECUPERE LE CLASSEMENT DE LEVENEMENT A METTRE EN FORME AUSSI #}
+			{% for participant in classement %}
+					<tr>
+						<td>{{participant.position}}</td>
+						<td>{{participant.nom}}</td>
+						<td>{{participant.prenom}}</td>
+						<td>{{participant.tempsTotal}}</td>
+						<td>{{participant.sexe}}</td>
+					</tr>
+			{% endfor %}
+		</table>
 	</section>
 
 

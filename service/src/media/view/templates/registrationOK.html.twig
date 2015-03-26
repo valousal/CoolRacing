@@ -1,5 +1,10 @@
 {% extends "main.html.twig" %}
 {% block main_content %}
-Voici votre token d'accés : <b>{{client_access_token}}</b> <br>
-/!\ Notez le bien /!\
+	<section id="main_form">
+		<div id='token'>
+			<h2>Voici votre token d'accés : </h2>
+			<h3><b>{{client_access_token}}</b></h3>
+			<p>/!\ Notez le bien /!\</p>
+		</div>
+	</section>
 {% endblock %}

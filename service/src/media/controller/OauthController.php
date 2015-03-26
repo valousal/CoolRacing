@@ -129,7 +129,7 @@ class OauthController extends AbstractController{
 			$url_redirect = filter_var($_GET['url_redirect'], FILTER_SANITIZE_STRING);
 			$auth_code = filter_var($_GET['auth_code'], FILTER_SANITIZE_STRING);
 
-			$client = modele\OauthCLient::find($client_id);
+			$client = modele\OauthClient::find($client_id);
 			$modeleAuthCode = modele\OauthCode::find($auth_code); //faire un belongs To
 
 			if ($client != null && $modeleAuthCode != null){

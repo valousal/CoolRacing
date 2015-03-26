@@ -1,7 +1,7 @@
 {% extends "main.html.twig" %}
 {% block main_content %}
 <section id="main_form">
-	<form method="POST" action="{{traitement}}">
+	<form id='formclient' method="POST" action="{{traitement}}">
 		<div class="form-group">
 		    <label>Login</label>
 		    <input type="text" name="login" placeholder="Entrez votre login" class="form-control">
@@ -12,10 +12,6 @@
 		    <input type="password" name="secret" placeholder="Entrez votre Secret" class="form-control">
 		</div>
 		<button type="submit" class="btn btn-default"> OK </button>
-
-		<div id="text">
-		</div>
-
 	</form>
 </section>
 {% endblock %}

@@ -1,6 +1,14 @@
+body{
+	padding-bottom: 4rem;
+}
 
-#picture{
-	margin: auto;
+footer{
+	padding-top: 1rem;
+	color: #34495E;
+}
+
+ul.navbar-nav li a{
+	line-height: 2rem !important;
 }
 
 #jumbotron{
@@ -8,14 +16,44 @@
 }
 
 .jumbotron{
-	background: url('http://www.mesacosan.com/media/articles/articles-utilisateurs/realiser-son-marathon-en-4h30-7452.jpg');
+	border-radius: 0 !important;
+	background: url('../../assets/datas/img/fond.png');
 	height: 290px;
 }
 
+.jumbotron h1{
+	padding-top: 1rem;
+	padding-bottom: 2rem;
+	color: #FF7422;
+	text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+	-webkit-text-stroke-width: 2px;
+	-webkit-text-stroke-color: #fff;
+}
+
 hr{
-	margin-bottom: 100px;
+	margin-bottom: 10px;
 	border-top: 0;
 	border-bottom: 0;
+}
+
+#btn-index{
+	background-color: #34495E;
+	background-image: none;
+	padding: 0.8rem 1rem;
+	border: 1px solid white;
+	font-size: 1rem;
+}
+
+#btn-index:hover{
+	background-color: #FF7422;
+	border: 1px solid white;
+}
+
+.container-fluid{
+	display: block;
+	box-sizing: border-box;
+	padding: 0rem 2rem;
+	max-width: 70rem !important;
 }
 
 #index{
@@ -24,17 +62,31 @@ hr{
 .navbar{
 	margin-bottom: 0;
 }
+.row{
+	margin: 0 !important;
+}
 
 .row p{
-	padding-left: 5em;
 	padding-top: 3em;
-	font-size: 1.3em;
+	font-size: 1.1em;
+	text-align: justify;
 }
 
 .row h1{
-	padding-left: 2em;
+	color: #34495E;
 }
 
+#img-index-right{
+	width: 150px;
+	margin: 2rem;
+	float: right;
+}
+
+#img-index-left{
+	width: 150px;
+	margin: 2rem;
+	float: left;
+}
 
 footer{
 	background-color:#e7e7e7;
@@ -47,12 +99,42 @@ footer{
 
 
 #main_form{
-	width: 40rem;
+	width: 30rem;
 	height: auto;
 	margin: 5rem auto 0rem;
 	background-color: white;
 	border-radius: 10px;
 	box-shadow: 0px 4px 4px lightgrey;
+}
+
+#formclient{
+	text-align: normal;
+	width: 100%;
+}
+
+#formclient label{
+	padding-bottom: 0.5rem;
+	cursor: default;
+}
+
+#formclient input[type='text'],#formclient input[type='password']{
+	height: 2rem;	
+	width: 100%;
+	font-size: 1rem;
+}
+
+#formclient input:focus{
+	box-shadow: none;
+	border: 1px solid #FF7422;
+}
+
+#formclient button{
+	background-color: #34495E;
+	background-image: none;
+	padding: 0.5rem 1rem;
+	border: 1px solid white;
+	font-size: 1rem;
+	margin: auto;
 }
 
 form{
@@ -68,16 +150,14 @@ button{
 	width: 9rem;
 	display: block;
 	margin: 1rem auto;
-	background-color: #F17113 !important;
 	border: none !important;
 	color: white !important;
 	font-weight: bold !important;
 }
 
-button:hover{
-	background-color: #CD5F10 !important;
+.navbar-brand{
+	text-indent: 1rem;
 }
-
 
 .form-group label{
 	width: 100%;
@@ -86,11 +166,32 @@ button:hover{
 	color: #484848;
 }
 
+#token{
+	width: 100%;
+	padding: 2rem;
+}
 
-@media screen and (max-width : 26.5rem){
+#token h2{
+	font-size: 1.4rem;
+}
 
-	.container-fluid{
-		padding: 0.5rem;
+#token h3{
+	width: 100%;
+	text-align: center;
+	font-size: 1.2rem;
+	color: grey;
+}
+
+#token p{
+	width: 100%;
+	text-align: center;
+}
+
+
+@media screen and (max-width : 40rem){
+
+	#container{
+		padding: 1rem !important;
 	}
 
 	#main_form{

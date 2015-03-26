@@ -11,8 +11,6 @@
 
 			<!-- events à cenir -->
 			<section class='event-list'>
-				<button class='list-left' onclick="scrollDiv('popular', -182)"> &lt; </button>
-				<button class='list-right' onclick="scrollDiv('popular', 182)"> &gt; </button>
 				<div class='eventList-head'>
 					<img src='{{rootUri}}/src/media/assets/datas/icones/popular-round.png' alt='New'/>
 					<h1> Événements à venir </h1>
@@ -22,7 +20,7 @@
 						{% if event.classement == '' %}
 						<li>
 							<a href='{{rootUri}}/evenements/{{event.id}}'>
-								<img src='{{rootUri}}/src/media/assets/datas/images/{{event.idCategorie}}.png' alt='no image'/>
+								<img src='{{rootUri}}/src/media/assets/datas/images/default.png' alt='no image'/>
 								<div>
 									<h2>{{event['titre']}}</h2>
 									{# <p>Organisé par: <strong> {{eventCat1.linkOrg.organisateur.nom_structure}} </strong> </p> #}

@@ -1,0 +1,45 @@
+table#classement{
+	width: auto;
+	height: auto;
+	display: inline-block;
+	vertical-align: top;
+	box-sizing: border-box;	
+	background-color: white;
+	box-shadow: 0px 3px 3px #aaa;
+	padding: 0.5rem;
+	font-size: 1rem;
+
+	tr{
+		width: 100%;
+
+		&:nth-child(odd){
+			background-color: lightgrey;
+		}
+
+		&:first-child{
+			color: white;
+			background-color: $main_color;
+		}
+
+		th{
+			padding: 0.8rem 3rem;
+			text-align: left;
+		}
+
+		td{
+			padding: 0.7rem 3rem;
+
+			&:first-child{
+				text-align: center;
+			}
+
+			&:nth-child(4){
+				font-weight: bold;
+			}
+
+			&:last-child{
+				text-align: center;
+			}
+		}	
+	}
+}
